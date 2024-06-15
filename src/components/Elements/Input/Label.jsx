@@ -1,7 +1,8 @@
-export const Label = () => {
+export const Label = (props) => {
+  const { htmlFor, children } = props;
   return (
-    <label htmlFor="" className="text-sm lg:text-base">
-      Usename
+    <label htmlFor={htmlFor} className="text-sm lg:text-md">
+      {children}
     </label>
   );
 };

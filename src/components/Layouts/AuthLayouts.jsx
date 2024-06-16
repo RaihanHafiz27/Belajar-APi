@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { SignInWith } from "../Fragments/SignInWith";
 import { useState } from "react";
+import { NavbarTitle } from "../Elements/Brand/NavbarTitle";
 
 export const AuthLayouts = (props) => {
   const { children } = props;
@@ -12,15 +13,7 @@ export const AuthLayouts = (props) => {
     >
       <div className="absolute w-full h-full lg:flex">
         <div className="flex flex-col h-5/6 lg:h-full lg:w-1/2">
-          <div className="flex items-center p-5">
-            <h1
-              className="text-2xl font-semibold lg:text-4xl text-amber-800 font-Poopins"
-              style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.3)" }}
-            >
-              LUXURA
-            </h1>
-            <img src="/images/leaf.svg" alt="" className="w-8 h-8" />
-          </div>
+          <NavbarTitle classname="p-5" />
           <div className="flex items-center justify-center flex-grow w-full ">
             <div
               className="flex flex-col items-center justify-center w-11/12 bg-white rounded-xl lg:w-3/5 2xl:w-1/2 "

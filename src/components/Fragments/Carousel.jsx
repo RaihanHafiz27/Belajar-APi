@@ -21,7 +21,7 @@ const Carousel = ({ images, interval = 3000 }) => {
 
   return (
     <div
-      className="relative w-11/12 h-40 mx-auto overflow-hidden lg:w-4/5 md:h-80 2xl:h-96 rounded-xl"
+      className="relative w-11/12 h-40 mx-auto overflow-hidden lg:w-3/5 md:h-72 2xl:h-80 rounded-xl"
       style={{
         boxShadow: "2px 2px 8px rgba(0,0,0,0.6)",
       }}

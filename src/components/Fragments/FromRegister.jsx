@@ -28,7 +28,7 @@ export const FormRegister = () => {
         label="Confirm Password"
         placeholder="**********"
       />
-      <Button>Register</Button>
+      <Button classname="mb-5">Register</Button>
     </form>
   );
 };

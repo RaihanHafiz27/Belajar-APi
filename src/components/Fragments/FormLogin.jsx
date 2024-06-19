@@ -23,7 +23,9 @@ export const FormLogin = () => {
         label="Password"
         placeholder="**********"
       />
-      <Button type="submit">Login</Button>
+      <Button type="submit" classname="mb-5">
+        Login
+      </Button>
     </form>
   );
 };

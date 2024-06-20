@@ -9,6 +9,7 @@ import Carousel from "../components/Fragments/Carousel";
 import { CloseIcon } from "../assets/Icons/CloseIcon";
 import { CardCategory } from "../components/Fragments/CardCategory";
 import { TableTopUp } from "../components/Fragments/TableTopUp";
+import "../../src/styles.css"; // Impor file CSS
 
 const images = [
   "/images/carousel-1.jpg",
@@ -21,6 +22,10 @@ const Testpage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false); // State untuk mengontrol modal
   const [countdown, setCountdown] = useState(300); // Waktu dalam detik, misalnya 5 menit (300 detik)
   const [showBlur, setShowBlur] = useState(false); // State untuk mengontrol blur background
+  const [inputValues, setInputValues] = useState({
+    number: "",
+    amount: "",
+  });
 
   useEffect(() => {
     // Mengurangi countdown setiap detik
@@ -43,20 +48,12 @@ const Testpage = () => {
   };
 
   return (
-    <div
-      className={`h-auto min-w-screen`}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 50,
-        backdropFilter: "blur(8px)",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div className="w-full min-h-screen bg-slate-200">
+    <div className={`h-auto min-w-screen relative`}>
+      <div
+        className={`w-full min-h-screen bg-slate-200 ${
+          showBlur ? "blur-overlay" : ""
+        }`}
+      >
         <nav className="relative flex flex-wrap items-center justify-between p-2 bg-orange-300 lg:p-5 border-slate-300">
           <div className="flex flex-wrap items-center justify-between w-full">
             <div className="relative flex items-center justify-between w-full lg:block lg:justify-start lg:static lg:w-auto">
@@ -178,52 +175,79 @@ const Testpage = () => {
           <div className="flex w-full">
             <div className="flex flex-wrap justify-between w-full lg:w-1/2">
               <CardCategory />
-              <CardCategory />
-              <CardCategory />
-              <CardCategory />
-              <CardCategory />
-              <CardCategory />
-              <CardCategory />
-              <CardCategory />
             </div>
             <TableTopUp handlePurchase={handlePurchase} />{" "}
             {/* Mengirim prop handlePurchase */}
+          </div>
+        </div>
+        <div className="w-11/12 h-auto p-2 mx-auto my-2 bg-white rounded-xl lg:w-3/5">
+          <h2 className="text-2xl font-semibold">Trending Minggu ini.</h2>
+          <div className="w-full p-2 border-2 border-black">
+            <div
+              className="w-2/12"
+              style={{
+                boxShadow: "2px 2px 8px rgba(0,0,0,0.6)",
+              }}
+            >
+              <div className="w-full h-48 border">
+                <img
+                  src="/images/baju.jpg"
+                  alt=""
+                  className="object-cover w-full h-full rounded-t-sm"
+                />
+              </div>
+              <div>
+                <p className="text-sm">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptate, quibusdam!
+                </p>
+                <p>Rp. 100.000</p>
+                <p>{`(4,5/5)`} 1rb+</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Modal Pop-up */}
       {modalIsOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-          <div className="relative w-2/3 max-w-lg mx-auto my-6">
-            {/* Content Modal */}
-            <div className="relative p-6 bg-white shadow-xl rounded-xl">
-              <button
-                className="absolute top-0 right-0 m-4 text-lg font-semibold text-gray-500 hover:text-gray-700"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-              <h2 className="mb-4 text-lg font-semibold text-gray-800">
-                Detail Pembelian
-              </h2>
-              <div className="flex items-center justify-center mb-4">
-                {/* Content dalam modal, seperti kode virtual account atau informasi pembayaran */}
-                {/* <Payment /> */}
-                <img src="/img/money.gif" alt="" className="w-40 h-40 ml-40" />
-                <p className="flex justify-center my-4 font-semibold text-gray-800">
-                  Kode Virtual Account: 74267474512
-                </p>
-                <p className="flex justify-center my-2">
-                  Waktu tersisa :{" "}
-                  <span className="ml-1 text-red-600">
-                    {Math.floor(countdown / 60)} menit {countdown % 60} detik
-                  </span>
-                </p>
+        <>
+          <div className="fixed inset-0 z-40 bg-black opacity-50"></div>
+          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+            <div className="relative w-2/3 max-w-lg mx-auto my-6">
+              {/* Content Modal */}
+              <div className="relative p-6 bg-white shadow-xl rounded-xl">
+                <button
+                  className="absolute top-0 right-0 m-4 text-lg font-semibold text-gray-500 hover:text-gray-700"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+                <h2 className="mb-4 text-lg font-semibold text-gray-800">
+                  Detail Pembelian
+                </h2>
+                <div className="flex items-center justify-center mb-4">
+                  {/* Content dalam modal, seperti kode virtual account atau informasi pembayaran */}
+                  {/* <Payment /> */}
+                  <img
+                    src="/img/money.gif"
+                    alt=""
+                    className="w-40 h-40 ml-40"
+                  />
+                  <p className="flex justify-center my-4 font-semibold text-gray-800">
+                    Kode Virtual Account: 74267474512
+                  </p>
+                  <p className="flex justify-center my-2">
+                    Waktu tersisa :{" "}
+                    <span className="ml-1 text-red-600">
+                      {Math.floor(countdown / 60)} menit {countdown % 60} detik
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
       {/* End Modal Pop-up */}
     </div>

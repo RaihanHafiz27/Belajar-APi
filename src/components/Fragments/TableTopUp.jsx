@@ -19,16 +19,17 @@ export const TableTopUp = ({ handlePurchase }) => {
     });
   };
 
-  const handlePurchaseClick = () => {
+  const handlePurchaseClick = (event) => {
+    event.preventDefault();
     handlePurchase(); // Memanggil handlePurchase dari props
   };
 
   const getPlaceholder = (column, field) => {
     const placeholders = {
-      Pulsa: { number: "Nomor Pulsa" },
-      "Paket Data": { number: "Nomor Paket Data" },
-      Donasi: { number: "Nomor Donasi" },
-      "Voucher Game": { number: "Nomor Voucher" },
+      Pulsa: { number: "Masukan Nomor" },
+      "Paket Data": { number: "Masukan Nomor" },
+      Donasi: { number: "Masukan Virtual Account" },
+      "Top Up Game": { number: "Masukan ID" },
     };
     return placeholders[column][field];
   };
@@ -42,6 +43,21 @@ export const TableTopUp = ({ handlePurchase }) => {
         <table className="w-full m-2">
           <thead>
             <tr className="border-b">
+              {["Pulsa", "Paket Data", "Donasi", "Top Up Game"].map(
+                (column) => (
+                  <th
+                    key={column}
+                    onClick={() => handleColumnClick(column)}
+                    className={`cursor-pointer ${
+                      activeColumn === column ? "active" : ""
+                    }`}
+                  >
+                    {column}
+                  </th>
+                )
+              )}
+            </tr>
+            {/* <tr className="border-b">
               <th
                 onClick={() => handleColumnClick("Pulsa")}
                 className="cursor-pointer"
@@ -61,12 +77,12 @@ export const TableTopUp = ({ handlePurchase }) => {
                 Donasi
               </th>
               <th
-                onClick={() => handleColumnClick("Voucher Game")}
+                onClick={() => handleColumnClick("Top Up Game")}
                 className="cursor-pointer"
               >
-                Voucher Game
+                Top Up Game
               </th>
-            </tr>
+            </tr> */}
           </thead>
           <tbody>
             <tr>
@@ -77,10 +93,10 @@ export const TableTopUp = ({ handlePurchase }) => {
                       htmlFor="number"
                       className="my-1 text-sm font-semibold text-gray-500"
                     >
-                      {activeColumn === "Pulsa" && "Nomor Pulsa"}
-                      {activeColumn === "Paket Data" && "Nomor Paket Data"}
-                      {activeColumn === "Donasi" && "Nomor Donasi"}
-                      {activeColumn === "Voucher Game" && "Nomor Voucher"}
+                      {activeColumn === "Pulsa" && "Nomor Telepon"}
+                      {activeColumn === "Paket Data" && "Nomor Telepon"}
+                      {activeColumn === "Donasi" && "Nomor Virtual Account"}
+                      {activeColumn === "Top Up Game" && "Game ID"}
                     </label>
                     <input
                       type="text"

@@ -10,6 +10,7 @@ import { CloseIcon } from "../assets/Icons/CloseIcon";
 import { CardCategory } from "../components/Fragments/CardCategory";
 import { TableTopUp } from "../components/Fragments/TableTopUp";
 import "../../src/styles.css"; // Impor file CSS
+import { CardProducts } from "../components/Fragments/CardProducts";
 
 const images = [
   "/images/carousel-1.jpg",
@@ -54,7 +55,7 @@ const Testpage = () => {
           showBlur ? "blur-overlay" : ""
         }`}
       >
-        <nav className="relative flex flex-wrap items-center justify-between p-2 bg-orange-300 lg:p-5 border-slate-300">
+        <nav className="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-5 border-slate-300">
           <div className="flex flex-wrap items-center justify-between w-full">
             <div className="relative flex items-center justify-between w-full lg:block lg:justify-start lg:static lg:w-auto">
               <NavbarTitle classname="w-auto border " />
@@ -160,7 +161,7 @@ const Testpage = () => {
             </div>
           </div>
         </nav>
-        <div className="my-2 lg:my-4">
+        <div className="pt-20 my-2 lg:my-4">
           <Carousel images={images} />
         </div>
         <div className="w-11/12 h-auto p-2 mx-auto bg-white rounded-xl lg:w-3/5">
@@ -181,30 +182,20 @@ const Testpage = () => {
           </div>
         </div>
         <div className="w-11/12 h-auto p-2 mx-auto my-2 bg-white rounded-xl lg:w-3/5">
-          <h2 className="text-2xl font-semibold">Trending Minggu ini.</h2>
-          <div className="w-full p-2 border-2 border-black">
-            <div
-              className="w-2/12"
-              style={{
-                boxShadow: "2px 2px 8px rgba(0,0,0,0.6)",
-              }}
-            >
-              <div className="w-full h-48 border">
-                <img
-                  src="/images/baju.jpg"
-                  alt=""
-                  className="object-cover w-full h-full rounded-t-sm"
-                />
-              </div>
-              <div>
-                <p className="text-sm">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptate, quibusdam!
-                </p>
-                <p>Rp. 100.000</p>
-                <p>{`(4,5/5)`} 1rb+</p>
-              </div>
-            </div>
+          <h2 className="font-semibold lg:text-2xl">Trending Minggu ini.</h2>
+          <div className="flex flex-wrap justify-between w-full ">
+            {/* card product start */}
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            <CardProducts />
+            {/*  card product end*/}
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ import { CardCategory } from "../components/Fragments/CardCategory";
 import { TableTopUp } from "../components/Fragments/TableTopUp";
 import "../../src/styles.css"; // Impor file CSS
 import { CardProducts } from "../components/Fragments/CardProducts";
+import { getProducts } from "../services/product.service";
 
 const images = [
   "/images/carousel-1.jpg",
@@ -23,6 +24,7 @@ const Testpage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false); // State untuk mengontrol modal
   const [countdown, setCountdown] = useState(300); // Waktu dalam detik, misalnya 5 menit (300 detik)
   const [showBlur, setShowBlur] = useState(false); // State untuk mengontrol blur background
+  const [products, setproducts] = useState([]);
   const [inputValues, setInputValues] = useState({
     number: "",
     amount: "",
@@ -47,6 +49,13 @@ const Testpage = () => {
     setModalIsOpen(false); // Tutup modal
     setShowBlur(false); // Hilangkan blur background
   };
+
+  useEffect(() => {
+    getProducts((data) => {
+      setproducts(data);
+      console.log(data);
+    });
+  }, []);
 
   return (
     <div className={`h-auto min-w-screen relative`}>
@@ -164,7 +173,7 @@ const Testpage = () => {
         <div className="pt-20 my-2 lg:my-4">
           <Carousel images={images} />
         </div>
-        <div className="w-11/12 h-auto p-2 mx-auto bg-white rounded-xl lg:w-3/5">
+        <div className="w-full h-auto p-2 bg-white md:mx-auto md:rounded-xl lg:w-3/5">
           <div className="flex justify-around py-2 border-b border-gray-400">
             <h2 className="text-sm font-semibold lg:text-xl">
               Kategori Pilihan
@@ -181,23 +190,32 @@ const Testpage = () => {
             {/* Mengirim prop handlePurchase */}
           </div>
         </div>
-        <div className="w-11/12 h-auto p-2 mx-auto my-2 bg-white rounded-xl lg:w-3/5">
-          <h2 className="font-semibold lg:text-2xl">Trending Minggu ini.</h2>
-          <div className="flex flex-wrap justify-between w-full ">
+        <div className="w-full h-auto my-2 bg-white md:mx-auto md:p-2 md:rounded-xl lg:w-3/5">
+          <h2 className="p-2 font-semibold font-Roboto lg:text-xl">
+            Trending Minggu ini.
+          </h2>
+          {/* flex flex-wrap justify-between w-full */}
+          <div className="grid grid-cols-2 gap-2 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-6">
             {/* card product start */}
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
-            <CardProducts />
+            {products.length > 0 &&
+              products.map((product) => (
+                <CardProducts key={product.id}>
+                  <CardProducts.Header
+                    image={product.image}
+                  ></CardProducts.Header>
+                  <CardProducts.Body title={product.title}>
+                    {product.description}
+                  </CardProducts.Body>
+                  <CardProducts.Footer
+                    price={product.price}
+                    discount={product.discount}
+                  ></CardProducts.Footer>
+                </CardProducts>
+              ))}
             {/*  card product end*/}
           </div>
         </div>
+        <div>Hello World</div>
       </div>
 
       {/* Modal Pop-up */}

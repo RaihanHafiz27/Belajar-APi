@@ -40,7 +40,7 @@ const categorylist = {
 
 export const CardCategory = () => {
   return (
-    <div className="flex flex-wrap justify-center w-full ">
+    <div className="flex flex-wrap justify-between w-full ">
       {categorylist.category.map((item, index) => (
         <Link key={index} className="flex flex-col items-center justify-center">
           <div className="p-2 mx-4 my-1 transition-all duration-300 bg-gray-200 rounded-full hover:bg-gray-400 lg:my-0 lg:mx-8 ">

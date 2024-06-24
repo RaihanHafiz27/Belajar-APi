@@ -1,52 +1,69 @@
 import { useEffect, useState } from "react";
 
-export const CardProducts = () => {
-  const [displayText, setDisplayText] = useState("");
-  const text = "Lorem, ipsum dolor sit amet consectetur adipisicing elit.";
+export const CardProducts = (props) => {
+  const { children } = props;
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      // console.log("Window width:", width); mengecek lebar window
-
-      if (width < 640) {
-        setDisplayText(text.substring(0, 11)); // Substring for small screens
-      } else if (width > 1024) {
-        setDisplayText(text.substring(0, 40)); // Substring for medium screens
-      } else {
-        setDisplayText(text); // Full text for large screens
-      }
-    };
-
-    // Initial check
-    handleResize();
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => window.removeEventListener("resize", handleResize);
-  }, [text]);
   return (
     <div
-      className="w-5/12 mx-1 my-1 lg:w-1/5 2xl:w-2/12 xl:mx-4 lg:my-2 rounded-xl"
+      className="flex flex-col justify-between p-2 md:rounded-xl"
       style={{
         boxShadow: "1px 1px 4px rgba(0,0,0,0.2)",
       }}
     >
-      <div className="w-full h-32 xl:h-40">
-        <img
-          src="/images/baju.jpg"
-          alt=""
-          className="object-cover w-full h-full rounded-t-xl"
-        />
-      </div>
-      <div className="p-2">
-        <p className="text-sm">Baju Baru</p>
-        <p className="text-xs text-justify xl:text-sm">{displayText}...</p>
-        <p className="text-xs xl:text-sm">{`(4,5/5)`} 1rb+</p>
-        <p className="text-xs xl:text-sm">Rp. 100.000</p>
-      </div>
+      {children}
     </div>
   );
 };
+
+const Header = (props) => {
+  const { image } = props;
+
+  return (
+    <div className="w-full h-32 xl:h-40">
+      <img src={image} alt="" className="w-full h-full md:rounded-t-xl" />
+    </div>
+  );
+};
+
+const Body = (props) => {
+  const { title, children } = props;
+  return (
+    <div className="">
+      <p className="text-sm font-semibold font-Roboto">
+        {title.substring(0, 20)}...
+      </p>
+      <p className="text-xs xl:text-sm">{children.substring(0, 35)}...</p>
+    </div>
+  );
+};
+
+const Footer = (props) => {
+  const { price, discount } = props;
+  const totalDiscount = discount ? price * (1 - discount / 100) : null;
+  return (
+    <div className="">
+      {/* text-xs font-semibold xl:text-sm font-Roboto */}
+      {discount ? (
+        <div className="">
+          <div className="flex justify-between">
+            <p className="text-xs font-semibold xl:text-sm font-Roboto">
+              ${totalDiscount.toFixed(2)}
+            </p>
+            <div className="flex text-xs xl:text-sm font-Roboto">
+              <p className="pr-1 text-gray-400 line-through">${price}</p>
+              <p className="font-semibold text-teal-600">{discount}%</p>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p className="text-xs font-semibold xl:text-sm font-Roboto">
+          $ {price}
+        </p>
+      )}
+    </div>
+  );
+};
+
+CardProducts.Header = Header;
+CardProducts.Body = Body;
+CardProducts.Footer = Footer;

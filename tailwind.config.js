@@ -4,6 +4,7 @@ export default {
   theme: {
     fontFamily: {
       Poopins: ["Poopins", "sams-serif"],
+      Roboto: ["Roboto", "sams-serif"],
     },
     extend: {},
   },

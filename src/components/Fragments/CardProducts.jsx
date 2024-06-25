@@ -20,7 +20,11 @@ const Header = (props) => {
 
   return (
     <div className="w-full h-32 xl:h-40">
-      <img src={image} alt="" className="w-full h-full md:rounded-t-xl" />
+      <img
+        src={image}
+        alt="product"
+        className="w-full h-full md:rounded-t-xl"
+      />
     </div>
   );
 };

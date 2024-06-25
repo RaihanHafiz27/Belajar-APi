@@ -12,6 +12,7 @@ import { TableTopUp } from "../components/Fragments/TableTopUp";
 import "../../src/styles.css"; // Impor file CSS
 import { CardProducts } from "../components/Fragments/CardProducts";
 import { getProducts } from "../services/product.service";
+import { Footer } from "../components/Fragments/Footer";
 
 const images = [
   "/images/carousel-1.jpg",
@@ -194,28 +195,27 @@ const Testpage = () => {
           <h2 className="p-2 font-semibold font-Roboto lg:text-xl">
             Trending Minggu ini.
           </h2>
-          {/* flex flex-wrap justify-between w-full */}
           <div className="grid grid-cols-2 gap-2 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-6">
             {/* card product start */}
             {products.length > 0 &&
               products.map((product) => (
                 <CardProducts key={product.id}>
-                  <CardProducts.Header
-                    image={product.image}
-                  ></CardProducts.Header>
+                  <CardProducts.Header image={product.image} />
                   <CardProducts.Body title={product.title}>
                     {product.description}
                   </CardProducts.Body>
                   <CardProducts.Footer
                     price={product.price}
                     discount={product.discount}
-                  ></CardProducts.Footer>
+                  />
                 </CardProducts>
               ))}
             {/*  card product end*/}
           </div>
         </div>
-        <div>Hello World</div>
+        <div className="w-full h-auto bg-gray-800 md:mx-auto md:p-2 md:rounded-t-xl lg:w-3/5">
+          <Footer />
+        </div>
       </div>
 
       {/* Modal Pop-up */}

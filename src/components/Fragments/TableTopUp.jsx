@@ -57,32 +57,6 @@ export const TableTopUp = ({ handlePurchase }) => {
                 )
               )}
             </tr>
-            {/* <tr className="border-b">
-              <th
-                onClick={() => handleColumnClick("Pulsa")}
-                className="cursor-pointer"
-              >
-                Pulsa
-              </th>
-              <th
-                onClick={() => handleColumnClick("Paket Data")}
-                className="cursor-pointer"
-              >
-                Paket Data
-              </th>
-              <th
-                onClick={() => handleColumnClick("Donasi")}
-                className="cursor-pointer"
-              >
-                Donasi
-              </th>
-              <th
-                onClick={() => handleColumnClick("Top Up Game")}
-                className="cursor-pointer"
-              >
-                Top Up Game
-              </th>
-            </tr> */}
           </thead>
           <tbody>
             <tr>

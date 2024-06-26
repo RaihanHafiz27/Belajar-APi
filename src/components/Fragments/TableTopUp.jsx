@@ -79,7 +79,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                       value={inputValues.number}
                       onChange={handleInputChange}
                       placeholder={getPlaceholder(activeColumn, "number")}
-                      className="w-full p-2 text-sm border border-gray-200 rounded"
+                      className="w-full p-2 text-sm border border-gray-200 rounded outline-none"
                     />
                   </div>
                   <div className="flex flex-col w-full">
@@ -115,7 +115,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                 <div className="flex items-center justify-center w-full">
                   <button
                     onClick={handlePurchaseClick} // Menggunakan handlePurchaseClick untuk memanggil handlePurchase
-                    className="w-1/2 p-2 text-white bg-blue-500 rounded hover:bg-blue-700"
+                    className="w-1/2 p-2 text-white rounded bg-amber-500 hover:bg-amber-700"
                   >
                     Beli
                   </button>

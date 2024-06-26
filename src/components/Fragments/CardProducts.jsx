@@ -5,7 +5,7 @@ export const CardProducts = (props) => {
 
   return (
     <div
-      className="flex flex-col justify-between p-2 md:rounded-xl"
+      className="flex flex-col justify-between p-2 md:rounded-lg"
       style={{
         boxShadow: "1px 1px 4px rgba(0,0,0,0.2)",
       }}

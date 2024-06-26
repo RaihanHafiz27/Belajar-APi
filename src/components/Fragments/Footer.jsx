@@ -7,11 +7,22 @@ const dataFooter = [
   },
   {
     title: "Contact us",
-    img1: "/images/contact-us/instagram.svg",
-    img2: "/images/contact-us/facebook.svg",
-    img3: "/images/contact-us/wa.svg",
-    img4: "/images/contact-us/linkedin.svg",
-    img5: "/images/contact-us/x.svg",
+    images: [
+      {
+        src: "/images/contact-us/instagram.svg",
+        link: "https://www.instagram.com/",
+      },
+      {
+        src: "/images/contact-us/facebook.svg",
+        link: "https://www.facebook.com/",
+      },
+      { src: "/images/contact-us/wa.svg", link: "https://web.whatsapp.com/" },
+      {
+        src: "/images/contact-us/linkedin.svg",
+        link: "https://id.linkedin.com/",
+      },
+      { src: "/images/contact-us/x.svg", link: "https://twitter.com/" },
+    ],
   },
   {
     title: "Email",
@@ -22,28 +33,32 @@ const dataFooter = [
 export const Footer = () => {
   return (
     <div className="w-full p-2 text-slate-200 font-Roboto">
-      <div className="flex flex-col pb-5 text-center border-b lg:flex-row">
+      <div className="flex flex-col pb-5 text-center border-b md:flex-row">
         {dataFooter.map((item, index) => (
-          <div key={index} className="w-full lg:w-1/3">
-            <h1 className="mb-2 font-semibold ">{item.title}</h1>
+          <div key={index} className="w-full my-2 md:my-0 md:w-1/3">
+            <h1 className="mb-2 text-sm font-semibold md:text-base">
+              {item.title}
+            </h1>
             {item.content ? (
               <p className="text-sm lg:text-base">{item.content}</p>
             ) : (
               <div className="flex justify-center ">
-                {Object.keys(item).map((key, idx) => {
-                  if (key.startsWith("img")) {
-                    return (
-                      <Link
-                        key={idx}
-                        to=""
-                        className="p-1 mx-2 bg-white rounded-full"
-                      >
-                        <img src={item[key]} alt="" className="w-6 h-6" />
-                      </Link>
-                    );
-                  }
-                  return null;
-                })}
+                {item.images &&
+                  item.images.map((imgItem, idx) => (
+                    <a
+                      key={idx}
+                      href={imgItem.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-6 h-6 mx-2 md:w-8 md:h-8 rounded-xl bg-slate-200 "
+                    >
+                      <img
+                        src={imgItem.src}
+                        alt=""
+                        className="z-0 w-full transition-all duration-300 scale-110 rounded-lg hover:scale-125"
+                      />
+                    </a>
+                  ))}
               </div>
             )}
           </div>

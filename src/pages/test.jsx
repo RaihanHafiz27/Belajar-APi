@@ -174,7 +174,7 @@ const Testpage = () => {
         <div className="pt-20 my-2 lg:my-4">
           <Carousel images={images} />
         </div>
-        <div className="w-full h-auto p-2 bg-white md:mx-auto md:rounded-xl lg:w-3/5">
+        <div className="w-full h-auto p-2 bg-white md:mx-auto md:rounded-xl lg:w-11/12 2xl:w-3/5">
           <div className="flex justify-around py-2 border-b border-gray-400">
             <h2 className="text-sm font-semibold lg:text-xl">
               Kategori Pilihan
@@ -184,18 +184,18 @@ const Testpage = () => {
             </h2>
           </div>
           <div className="flex w-full">
-            <div className="flex flex-wrap justify-between w-full lg:w-1/2">
+            <div className="flex w-full lg:w-1/2">
               <CardCategory />
             </div>
             <TableTopUp handlePurchase={handlePurchase} />{" "}
             {/* Mengirim prop handlePurchase */}
           </div>
         </div>
-        <div className="w-full h-auto my-2 bg-white md:mx-auto md:p-2 md:rounded-xl lg:w-3/5">
+        <div className="w-full h-auto my-2 bg-white md:mx-auto md:p-2 md:rounded-xl lg:w-11/12 2xl:w-3/5">
           <h2 className="p-2 font-semibold font-Roboto lg:text-xl">
             Trending Minggu ini.
           </h2>
-          <div className="grid grid-cols-2 gap-2 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-6">
+          <div className="grid grid-cols-2 gap-2 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
             {/* card product start */}
             {products.length > 0 &&
               products.map((product) => (
@@ -213,7 +213,7 @@ const Testpage = () => {
             {/*  card product end*/}
           </div>
         </div>
-        <div className="w-full h-auto bg-gray-800 md:mx-auto md:p-2 md:rounded-t-xl lg:w-3/5">
+        <div className="w-full h-auto bg-gray-800 md:mx-auto md:p-2 md:rounded-t-xl lg:w-11/12 2xl:w-3/5">
           <Footer />
         </div>
       </div>

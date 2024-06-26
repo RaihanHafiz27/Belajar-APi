@@ -21,7 +21,7 @@ const Carousel = ({ images, interval = 3000 }) => {
 
   return (
     <div
-      className="relative w-full h-40 mx-auto overflow-hidden lg:w-3/5 md:h-52 2xl:h-80 lg:rounded-xl"
+      className="relative w-full h-40 mx-auto overflow-hidden lg:w-11/12 2xl:w-3/5 md:h-72 lg:rounded-xl"
       style={{
         boxShadow: "2px 2px 8px rgba(0,0,0,0.6)",
       }}
@@ -35,7 +35,7 @@ const Carousel = ({ images, interval = 3000 }) => {
             <img
               src={image}
               alt={`Slide ${index}`}
-              className="object-center w-full h-full"
+              className="object-cover w-full h-full"
             />
           </div>
         ))}

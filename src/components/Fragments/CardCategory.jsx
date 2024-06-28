@@ -40,12 +40,9 @@ const categorylist = {
 
 export const CardCategory = () => {
   return (
-    <div className="grid w-full grid-cols-4 gap-2 border-2 border-pink-600">
+    <div className="grid w-full grid-cols-4 gap-2">
       {categorylist.category.map((item, index) => (
-        <Link
-          key={index}
-          className="flex flex-col items-center justify-center border-2 border-black"
-        >
+        <Link key={index} className="flex flex-col items-center justify-center">
           <div className="p-2 transition-all duration-300 bg-gray-200 rounded-full hover:bg-gray-400 ">
             <img
               src={item.image}

@@ -6,6 +6,9 @@ import { LoginPage } from "./pages/login.jsx";
 import { RegisterPage } from "./pages/register.jsx";
 import { ProductsPage } from "./pages/products.jsx";
 import Testpage from "./pages/test.jsx";
+import TotalTopUpContextProvider from "./context/TotalTopUp.jsx";
+import { CartPage } from "./pages/cart.jsx";
+import { ProfilePage } from "./pages/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,14 @@ const router = createBrowserRouter([
     element: <ProductsPage />,
   },
   {
+    path: "/cart",
+    element: <CartPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
     path: "/test",
     element: <Testpage />,
   },
@@ -28,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <TotalTopUpContextProvider>
+      <RouterProvider router={router} />
+    </TotalTopUpContextProvider>
   </React.StrictMode>
 );

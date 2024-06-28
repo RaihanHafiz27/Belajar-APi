@@ -4,19 +4,18 @@ import React, { createContext, useContext, useState } from "react";
 
 const TotalTopUpContext = createContext();
 
-export const TotalTopUpProvider = ({ children }) => {
-  const [total, setTotal] = useState(0); // Initial total value
-
-  // Function to update total
-  const updateTotal = (newTotal) => {
-    setTotal(newTotal);
-  };
+const TotalTopUpContextProvider = ({ children }) => {
+  const [total, setTotal] = useState({
+    notelp: "",
+    purchase: "",
+  });
 
   return (
-    <TotalTopUpContext.Provider value={{ total, updateTotal }}>
+    <TotalTopUpContext.Provider value={{ total, setTotal }}>
       {children}
     </TotalTopUpContext.Provider>
   );
 };
 
-export const useTotalTopUp = () => useContext(TotalTopUpContext);
+export const TotalTopUp = TotalTopUpContext;
+export default TotalTopUpContextProvider;

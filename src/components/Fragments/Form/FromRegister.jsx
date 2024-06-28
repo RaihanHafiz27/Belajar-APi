@@ -1,5 +1,5 @@
-import { Button } from "../Elements/Button/Button";
-import { InputForm } from "../Elements/Input/Index";
+import { Button } from "../../Elements/Button/Button";
+import { InputForm } from "../../Elements/Input/Index";
 
 export const FormRegister = () => {
   return (

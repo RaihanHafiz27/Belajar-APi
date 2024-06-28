@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import TotalTopUpContextProvider from "../../context/TotalTopUp";
+import { TotalTopUp } from "../../context/TotalTopUp";
+import { ErrorPopUp } from "./Popups/ErrorPopUp";
 
 export const TableTopUp = ({ handlePurchase }) => {
   const [activeColumn, setActiveColumn] = useState("Pulsa");
-  const [inputValues, setInputValues] = useState({
-    number: "",
-    amount: "",
-  });
+  const { total, setTotal } = useContext(TotalTopUp);
 
   const handleColumnClick = (column) => {
     setActiveColumn(column);
@@ -13,14 +13,15 @@ export const TableTopUp = ({ handlePurchase }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputValues({
-      ...inputValues,
+    setTotal({
+      ...total,
       [name]: value,
     });
   };
 
   const handlePurchaseClick = (event) => {
     event.preventDefault();
+
     handlePurchase(); // Memanggil handlePurchase dari props
   };
 
@@ -36,7 +37,7 @@ export const TableTopUp = ({ handlePurchase }) => {
 
   return (
     <div className="hidden w-full mx-auto lg:flex-col lg:flex lg:w-1/2">
-      <p className="my-4 text-sm font-medium text-center text-gray-600">
+      <p className="my-4 text-sm tracking-wide text-center text-gray-600 font-Roboto">
         Silahkan top up disini yang aman, mudah, dan terpercaya.
       </p>
       <div className="hidden w-full border lg:flex rounded-xl">
@@ -48,7 +49,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                   <th
                     key={column}
                     onClick={() => handleColumnClick(column)}
-                    className={`cursor-pointer ${
+                    className={`cursor-pointer font-Roboto text-sm ${
                       activeColumn === column ? "active" : ""
                     }`}
                   >
@@ -75,8 +76,8 @@ export const TableTopUp = ({ handlePurchase }) => {
                     <input
                       type="text"
                       id="number"
-                      name="number"
-                      value={inputValues.number}
+                      name="notelp"
+                      value={total.notelp}
                       onChange={handleInputChange}
                       placeholder={getPlaceholder(activeColumn, "number")}
                       className="w-full p-2 text-sm border border-gray-200 rounded outline-none"
@@ -91,10 +92,10 @@ export const TableTopUp = ({ handlePurchase }) => {
                     </label>
                     <select
                       id="amount"
-                      name="amount"
-                      value={inputValues.amount}
+                      name="purchase"
+                      value={total.purchase}
                       onChange={handleInputChange}
-                      className="w-full p-2 text-sm border border-gray-200 rounded"
+                      className="w-full p-2 text-sm border border-gray-200 rounded outline-none"
                     >
                       <option value="" disabled hidden>
                         Pilih Nominal
@@ -115,7 +116,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                 <div className="flex items-center justify-center w-full">
                   <button
                     onClick={handlePurchaseClick} // Menggunakan handlePurchaseClick untuk memanggil handlePurchase
-                    className="w-1/2 p-2 text-white rounded bg-amber-500 hover:bg-amber-700"
+                    className="w-1/2 p-2 text-white rounded bg-amber-600 hover:bg-amber-700"
                   >
                     Beli
                   </button>

@@ -1,21 +1,24 @@
+import { useState } from "react";
 import { login } from "../../../services/login.service";
 import { Button } from "../../Elements/Button/Button";
 import { InputForm } from "../../Elements/Input/Index";
+import { getDataUser } from "../../../services/users.service";
 
 export const FormLogin = () => {
+  const [isLoginFailed, setIsLoginFailed] = useState("");
   const handleLogin = (event) => {
     event.preventDefault();
-    // localStorage.setItem("username", event.target.username.value);
-    // localStorage.setItem("password", event.target.password.value);
-    // window.location.href = "/products";
+
     const data = {
       username: event.target.username.value,
       password: event.target.password.value,
     };
     login(data, (status, res) => {
       if (status) {
+        window.location.href = "/products";
         localStorage.setItem("token", res);
       }
+      setIsLoginFailed(res.response.data);
     });
   };
 
@@ -36,6 +39,11 @@ export const FormLogin = () => {
       <Button type="submit" classname="mb-5">
         Login
       </Button>
+      {isLoginFailed && (
+        <p className="mb-2 text-center text-red-600 font-Roboto">
+          {isLoginFailed}
+        </p>
+      )}
     </form>
   );
 };

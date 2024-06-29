@@ -3,11 +3,11 @@ export const Button = (props) => {
     children = "...",
     type = "button",
     onClick = () => {},
-    classname,
+    classname = "text-slate-200 lg:py-2",
   } = props;
   return (
     <button
-      className={`py-1 my-2  lg:py-2 bg-amber-600 hover:bg-amber-700 text-slate-200 ${classname} w-full`}
+      className={`py-1 my-2   bg-amber-600 hover:bg-amber-700  ${classname} w-full`}
       type={type}
       onClick={onClick}
     >

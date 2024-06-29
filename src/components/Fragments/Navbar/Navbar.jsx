@@ -7,12 +7,13 @@ import { CartIcon } from "../../../assets/Icons/CartIcon";
 import { LogoutIcon } from "../../../assets/Icons/LogoutIcon";
 import { CloseIcon } from "../../../assets/Icons/CloseIcon";
 import { Link } from "react-router-dom";
+import { ProductsIcon } from "../../../assets/Icons/ProductsIcon";
 
 const navbarItems = [
   {
-    icon: <ProfileIcon />,
-    text: "Profile",
-    to: "",
+    icon: <ProductsIcon />,
+    text: "Products",
+    to: "/products",
   },
   {
     icon: <CartIcon />,
@@ -20,14 +21,19 @@ const navbarItems = [
     to: "/cart",
   },
   {
-    icon: <LogoutIcon />,
-    text: "Logout",
-    href: "",
+    icon: <ProfileIcon />,
+    text: "Profile",
+    to: "/profile",
   },
 ];
 
 export const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleLogout = () => {
+    window.location.href = "/";
+    localStorage.removeItem("token");
+  };
 
   return (
     <nav className="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-5 border-slate-300">
@@ -42,7 +48,7 @@ export const Navbar = () => {
           </Button>
         </div>
         <div className="items-center hidden lg:flex ">
-          <ul className="flex flex-col list-none lg:flex-row">
+          <ul className="flex flex-col items-center list-none lg:flex-row">
             {navbarItems.map((item, index) => (
               <li key={index} className="mx-2">
                 <Link
@@ -56,6 +62,17 @@ export const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li className="mx-2">
+              <Button
+                classname="flex items-center text-sm font-semibold leading-snug uppercase bg-transparent hover:bg-transparent lg:py-0 font-Roboto"
+                onClick={handleLogout}
+              >
+                <i className="">{<LogoutIcon />}</i>
+                <span className="ml-2 underline underline-offset-4">
+                  Logout
+                </span>
+              </Button>
+            </li>
           </ul>
         </div>
       </div>

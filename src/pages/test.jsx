@@ -25,129 +25,86 @@ import { Navbar } from "../components/Fragments/Navbar/Navbar";
 // ];
 
 const Testpage = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false); // State untuk mengontrol modal
-  const [countdown, setCountdown] = useState(300); // Waktu dalam detik, misalnya 5 menit (300 detik)
-  const [showBlur, setShowBlur] = useState(false); // State untuk mengontrol blur background
-  const [products, setproducts] = useState([]);
-
-  const { total, setTotal } = useContext(TotalTopUp);
-
-  const [error, setError] = useState("");
-  const [isErrorPopUpOpen, setIsErrorPopUpOpen] = useState(false);
-
-  useEffect(() => {
-    // Mengurangi countdown setiap detik
-    const timer = setInterval(() => {
-      setCountdown((prevCountdown) => {
-        if (prevCountdown <= 1) {
-          clearInterval(timer);
-          closeModal();
-          return 0;
-        }
-        return prevCountdown - 1;
-      });
-    }, 1000);
-
-    // Membersihkan timer saat komponen unmount
-    return () => clearInterval(timer);
-  }, []);
-
-  const handlePurchase = () => {
-    if (!total.notelp || !total.purchase) {
-      setError("Mohon isi nomor telepon & nominal pembelian!!!");
-      setIsErrorPopUpOpen(true);
-      return;
-    }
-    setModalIsOpen(true); // Munculkan modal ketika tombol Beli diklik
-    setShowBlur(true); // Tampilkan blur background
-  };
-
-  const closeModal = () => {
-    setIsErrorPopUpOpen(false);
-    setModalIsOpen(false); // Tutup modal
-    setShowBlur(false); // Hilangkan blur background
-  };
-
-  useEffect(() => {
-    getProducts((data) => {
-      setproducts(data);
-      console.log(data);
-    });
-  }, []);
-
   return (
-    <div className={`h-auto min-w-screen relative`}>
-      <div
-        className={`w-full min-h-screen bg-slate-200 ${
-          showBlur ? "blur-overlay" : ""
-        }`}
-      >
-        <Navbar />
-        <div className="pt-16 my-2 2xl:pt-20 lg:my-4">
-          <Carousel />
-          {/* images={images} */}
-        </div>
-        <div className="w-full h-auto p-2 bg-white md:mx-auto md:rounded-xl lg:w-11/12 2xl:w-3/5">
-          <div className="flex justify-around py-2 border-b border-gray-400 font-Roboto">
-            <h2 className="text-sm font-semibold lg:text-xl">
-              Kategori Pilihan
-            </h2>
-            <h2 className="hidden text-sm font-semibold lg:block lg:text-xl">
-              Top up
-            </h2>
-          </div>
-          <div className="flex w-full">
-            <div className="flex w-full lg:w-1/2">
-              <CardCategory />
+    <div
+      className="flex flex-col w-full min-h-screen bg-bottom bg-no-repeat bg-cover border-2 border-pink-500"
+      style={{ backgroundImage: "url('/images/bg-profile.jpg')" }}
+    >
+      <Navbar />
+      <div className="flex items-center justify-center flex-grow mt-16 border-2 border-black 2xl:mt-20 ">
+        <div
+          className="w-full bg-white lg:rounded-lg lg:p-6 lg:w-3/5"
+          style={{
+            boxShadow: "2px 2px 8px rgba(0,0,0,0.6)",
+          }}
+        >
+          <div className="border-2 border-red-400 ">
+            <div className="mb-6 border-b border-gray-900">
+              <h1 className="text-xl font-semibold font-Roboto">My Profile</h1>
+              <p className="pb-4">
+                Perbarui informasi akun Anda untuk mengelola, melindungi, dan
+                mengamankan data Anda.
+              </p>
             </div>
-            <TableTopUp handlePurchase={handlePurchase} />{" "}
-            {/* Mengirim prop handlePurchase */}
-          </div>
-        </div>
-        <div className="w-full h-auto my-2 bg-white md:mx-auto md:p-2 md:rounded-xl lg:w-11/12 2xl:w-3/5">
-          <h2 className="p-2 font-semibold font-Roboto lg:text-xl">
-            Trending Minggu ini.
-          </h2>
-          <div className="grid grid-cols-2 gap-2 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-            {/* card product start */}
-            {products.length > 0 &&
-              products.map((product) => (
-                <CardProducts key={product.id}>
-                  <CardProducts.Header image={product.image} />
-                  <CardProducts.Body title={product.title}>
-                    {product.description}
-                  </CardProducts.Body>
-                  <CardProducts.Footer
-                    price={product.price}
-                    discount={product.discount}
+            <div className="flex">
+              <div className="flex flex-col w-1/4 border-r border-black">
+                <div className="flex flex-col items-center justify-center w-full">
+                  <img
+                    src="/images/profile.png"
+                    alt=""
+                    className="w-20 h-20 pt-2 bg-gray-300 rounded-full hover:bg-gray-400"
                   />
-                </CardProducts>
-              ))}
-            {/*  card product end*/}
+                  <p className=" font-Roboto">Kanna Anissa</p>
+                </div>
+                <div className="text-sm text-center">
+                  <p>Ukuran gambar : maks 1mb</p>
+                  <p>Format gambar : .JPEG, .PNG</p>
+                </div>
+              </div>
+              <div className="w-3/4 px-4 text-sm font-Roboto">
+                <div className="items-center border-2 border-black lg:flex">
+                  <div className="flex items-center justify-between w-full py-2 border-2 border-red-600 ">
+                    <p className="w-1/4 text-end">First Name</p>
+                    <p className="w-3/4 ml-4 border-b border-gray-700">Kanna</p>
+                  </div>
+                  <div className="flex items-center justify-between w-full py-2 border-2 border-red-600 ">
+                    <p className="w-1/4 text-end">Last Name</p>
+                    <p className="w-3/4 ml-4 border-b border-gray-700">
+                      Annisa Syifa
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between w-1/2 py-2 my-2 border-2 border-red-600 ">
+                  <p className="w-1/4 text-end">Username</p>
+                  <p className="w-3/4 ml-4 border-b border-gray-700">
+                    Kanna Anissa
+                  </p>
+                </div>
+                <div className="flex items-center justify-between w-1/2 py-2 my-2 border-2 border-red-600 ">
+                  <p className="w-1/4 text-end">Email</p>
+                  <p className="w-3/4 ml-4 border-b border-gray-700">
+                    KannaAnissa@gmail.com
+                  </p>
+                </div>
+                <div className="flex items-center justify-between w-1/2 py-2 my-2 border-2 border-red-600 ">
+                  <p className="w-1/4 text-end">Kode Pos</p>
+                  <p className="w-3/4 ml-4 border-b border-gray-700">1234</p>
+                </div>
+                <div className="flex items-center justify-between w-1/2 py-2 my-2 border-2 border-red-600 ">
+                  <p className="w-1/4 text-end">Alamat</p>
+                  <p className="w-3/4 ml-4 truncate border-b border-gray-700">
+                    Kota Bekasi Kec Jatiasih Kel Jatiluhur no 27
+                  </p>
+                </div>
+                <div className="flex w-1/2">
+                  <Button></Button>
+                  <Button></Button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="w-full h-auto bg-gray-800 md:mx-auto md:p-2 md:rounded-t-xl lg:w-11/12 2xl:w-3/5">
-          <Footer />
         </div>
       </div>
-
-      {/* Modal Pop-up */}
-      {modalIsOpen && (
-        <PopUp
-          isOpen={modalIsOpen}
-          closeModal={closeModal}
-          countdown={countdown}
-        />
-      )}
-      {/* End Modal Pop-up */}
-      {/* Start Error PopUp */}
-      {isErrorPopUpOpen && (
-        <ErrorPopUp isOpen={isErrorPopUpOpen} closeModal={closeModal}>
-          {error}
-        </ErrorPopUp>
-      )}
-      {/* End Error PopUp */}
     </div>
   );
 };

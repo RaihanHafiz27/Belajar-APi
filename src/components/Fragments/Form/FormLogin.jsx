@@ -6,6 +6,7 @@ import { getDataUser } from "../../../services/users.service";
 
 export const FormLogin = () => {
   const [isLoginFailed, setIsLoginFailed] = useState("");
+  const [dataUser, setDataUser] = useState(null);
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -17,6 +18,7 @@ export const FormLogin = () => {
       if (status) {
         window.location.href = "/products";
         localStorage.setItem("token", res);
+        getDataUser(username, res.token);
       }
       setIsLoginFailed(res.response.data);
     });

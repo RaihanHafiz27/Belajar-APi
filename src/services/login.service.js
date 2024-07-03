@@ -12,29 +12,6 @@ export const login = (data, callback) => {
     });
 };
 
-// export const dataUser = () => {
-//   const token = localStorage.getItem("token");
-//   const decoded = jwtDecode(token);
-//   const userId = decoded.sub;
-//   console.log(decoded);
-
-//   axios
-//     .get("https://fakestoreapi.com/users")
-//     .then((res) => {
-//       const users = res.data;
-//       const user = users.find((user) => user.id === userId);
-
-//       if (user) {
-//         console.log("User ditemukan:", user);
-//       } else {
-//         console.log("User tidak ditemukan");
-//       }
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
 export const dataUser = async () => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -58,3 +35,26 @@ export const dataUser = async () => {
     throw error;
   }
 };
+
+// export const dataUser = () => {
+//   const token = localStorage.getItem("token");
+//   const decoded = jwtDecode(token);
+//   const userId = decoded.sub;
+//   console.log(decoded);
+
+//   axios
+//     .get("https://fakestoreapi.com/users")
+//     .then((res) => {
+//       const users = res.data;
+//       const user = users.find((user) => user.id === userId);
+
+//       if (user) {
+//         console.log("User ditemukan:", user);
+//       } else {
+//         console.log("User tidak ditemukan");
+//       }
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };

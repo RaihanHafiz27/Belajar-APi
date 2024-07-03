@@ -29,6 +29,8 @@ export const ProfilePage = () => {
     return <div>Loading...</div>;
   }
 
+  console.log(user);
+
   return (
     <div
       className="flex flex-col w-full min-h-screen bg-bottom bg-no-repeat bg-cover border-2 border-pink-500"

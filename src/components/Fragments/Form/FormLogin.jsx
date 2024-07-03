@@ -6,7 +6,7 @@ import { getDataUser } from "../../../services/users.service";
 
 export const FormLogin = () => {
   const [isLoginFailed, setIsLoginFailed] = useState("");
-  const [dataUser, setDataUser] = useState(null);
+
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -14,13 +14,14 @@ export const FormLogin = () => {
       username: event.target.username.value,
       password: event.target.password.value,
     };
-    login(data, (status, res) => {
+
+    login(data, (status, token) => {
       if (status) {
+        localStorage.setItem("token", token);
         window.location.href = "/products";
-        localStorage.setItem("token", res);
-        getDataUser(username, res.token);
+      } else {
+        setIsLoginFailed(token); // token berisi pesan kesalahan
       }
-      setIsLoginFailed(res.response.data);
     });
   };
 

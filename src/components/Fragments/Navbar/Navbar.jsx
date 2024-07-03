@@ -36,7 +36,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-5 border-slate-300">
+    <nav className="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-3 2xl:p-5 ">
       <div className="flex flex-wrap items-center justify-between w-full">
         <div className="relative flex items-center justify-between w-full lg:block lg:justify-start lg:static lg:w-auto">
           <NavbarTitle classname="w-auto " />

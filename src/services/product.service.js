@@ -5,10 +5,22 @@ export const getProducts = (callback) => {
     .get("https://fakestoreapi.in/api/products")
     .then((res) => {
       callback(res.data.products);
-      console.log(res);
     })
     .catch((err) => {
       callback(err);
-      console.log(err);
+    });
+};
+
+export const getDetailsProducts = (id, callback) => {
+  console.log(`Fetching product with ID: ${id}`); // Debugging
+  axios
+    .get(`https://fakestoreapi.in/api/products/${id}`)
+    .then((res) => {
+      console.log(res.data.product);
+      callback(res.data.product);
+    })
+    .catch((error) => {
+      console.log(error);
+      callback(error);
     });
 };

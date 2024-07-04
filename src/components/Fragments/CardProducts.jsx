@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const CardProducts = (props) => {
   const { children } = props;
@@ -16,16 +17,16 @@ export const CardProducts = (props) => {
 };
 
 const Header = (props) => {
-  const { image } = props;
+  const { image, id } = props;
 
   return (
-    <div className="w-full h-32 xl:h-40">
+    <Link to={`/product/${id}`} className="w-full h-32 xl:h-40">
       <img
         src={image}
         alt="product"
         className="w-full h-full md:rounded-t-xl"
       />
-    </div>
+    </Link>
   );
 };
 

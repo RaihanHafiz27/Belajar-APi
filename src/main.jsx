@@ -9,6 +9,7 @@ import Testpage from "./pages/test.jsx";
 import TotalTopUpContextProvider from "./context/TotalTopUp.jsx";
 import { CartPage } from "./pages/cart.jsx";
 import { ProfilePage } from "./pages/Profile.jsx";
+import { DetailsProductPage } from "./pages/detailsProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <ProfilePage />,
+  },
+  {
+    path: "/product/:id",
+    element: <DetailsProductPage />,
   },
   {
     path: "/test",

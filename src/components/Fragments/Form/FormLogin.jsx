@@ -20,7 +20,7 @@ export const FormLogin = () => {
         localStorage.setItem("token", token);
         window.location.href = "/products";
       } else {
-        setIsLoginFailed(token); // token berisi pesan kesalahan
+        setIsLoginFailed(token);
       }
     });
   };
@@ -39,9 +39,7 @@ export const FormLogin = () => {
         label="Password"
         placeholder="**********"
       />
-      <Button type="submit" classname="mb-5">
-        Login
-      </Button>
+      <Button type="submit">Login</Button>
       {isLoginFailed && (
         <p className="mb-2 text-center text-red-600 font-Roboto">
           {isLoginFailed}

@@ -17,18 +17,45 @@ import { PopUp } from "../components/Fragments/Popups/PopUp";
 import { TotalTopUp } from "../context/TotalTopUp";
 import { ErrorPopUp } from "../components/Fragments/Popups/ErrorPopUp";
 import { Navbar } from "../components/Fragments/Navbar/Navbar";
-
-const data = [
-  { label: "First Name", value: "Kanna" },
-  { label: "Last Name", value: "Anissa Syifa" },
-  { label: "Username", value: "Kanna Anissa" },
-  { label: "Email", value: "KannaAnissa@gmail.com" },
-  { label: "Phone", value: "0210920190291" },
-  { label: "Kode Pos", value: "1234" },
-  { label: "Address", value: "Kota Bekasi Kec Jatiasih Kel Jatiluhur no 27" },
-];
+import { dataUser } from "../services/login.service";
 
 const Testpage = () => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await dataUser();
+        setUser(userData);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <div>Error : {error}</div>;
+  }
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
+  const fields = [
+    { label: "First Name", value: user.name.firstname },
+    { label: "Last Name", value: user.name.lastname },
+    { label: "Username", value: user.username },
+    { label: "Email", value: user.email },
+    { label: "Phone", value: user.phone },
+    { label: "Kode Pos", value: user.address.zipcode },
+    {
+      label: "Address",
+      value: `${user.address.city} ${user.address.street} ${user.address.number}`,
+    },
+  ];
+
   return (
     <div
       className="flex flex-col w-full min-h-screen bg-center bg-no-repeat bg-cover border-2 border-pink-500"
@@ -72,8 +99,8 @@ const Testpage = () => {
                   </Button>
                 </div>
               </div>
-              <div className="text-sm border-2 border-red-500 lg:w-3/5 2xl:w-3/4 font-Roboto">
-                {data.map((item, index) => (
+              <div className="text-sm lg:w-3/5 2xl:w-3/4 font-Roboto">
+                {fields.map((item, index) => (
                   <div
                     key={index}
                     className="flex items-center justify-between py-2 mx-2 lg:mx-0 lg:w-full 2xl:w-1/2 2xl:my-6"

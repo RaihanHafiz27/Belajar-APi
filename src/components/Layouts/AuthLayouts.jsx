@@ -26,7 +26,7 @@ export const AuthLayouts = (props) => {
             >
               <Navigation />
               <div className="flex flex-col w-4/5 lg:w-4/5">{children}</div>
-              <div className="inline-flex items-center justify-center w-full mb-5">
+              <div className="inline-flex items-center justify-center w-full my-4">
                 <hr className="w-1/5 lg:w-1/4 h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
                 <p className="mx-2 text-sm text-gray-600 md:text-base">
                   or continue with

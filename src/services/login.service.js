@@ -17,9 +17,8 @@ export const dataUser = async () => {
   if (!token) {
     throw new Error("Token tidak ditemukan");
   }
-
   const decoded = jwtDecode(token);
-  const userId = decoded.sub; // Mengambil sub dari token yang sudah didecode
+  const userId = decoded.sub;
 
   try {
     const res = await axios.get("https://fakestoreapi.com/users");
@@ -29,12 +28,35 @@ export const dataUser = async () => {
     if (!user) {
       throw new Error("User tidak ditemukan");
     }
-
     return user;
   } catch (error) {
     throw error;
   }
 };
+
+// export const dataUser = async () => {
+//   const token = localStorage.getItem("token");
+//   if (!token) {
+//     throw new Error("Token tidak ditemukan");
+//   }
+
+//   const decoded = jwtDecode(token);
+//   const userId = decoded.sub; // Mengambil sub dari token yang sudah didecode
+
+//   try {
+//     const res = await axios.get("https://fakestoreapi.com/users");
+//     const users = res.data;
+//     const user = users.find((user) => user.id === userId);
+
+//     if (!user) {
+//       throw new Error("User tidak ditemukan");
+//     }
+
+//     return user;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 // export const dataUser = () => {
 //   const token = localStorage.getItem("token");

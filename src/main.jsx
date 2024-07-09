@@ -10,6 +10,7 @@ import TotalTopUpContextProvider from "./context/TotalTopUp.jsx";
 import { CartPage } from "./pages/cart.jsx";
 import { ProfilePage } from "./pages/Profile.jsx";
 import { DetailsProductPage } from "./pages/detailsProduct.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,8 +45,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <TotalTopUpContextProvider>
-      <RouterProvider router={router} />
-    </TotalTopUpContextProvider>
+    <CartProvider>
+      <TotalTopUpContextProvider>
+        <RouterProvider router={router} />
+      </TotalTopUpContextProvider>
+    </CartProvider>
   </React.StrictMode>
 );

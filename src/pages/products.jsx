@@ -109,7 +109,7 @@ export const ProductsPage = () => {
           <h2 className="p-2 font-semibold font-Roboto lg:text-xl">
             Trending Minggu ini.
           </h2>
-          <div className="grid grid-cols-2 gap-2 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-4 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
             {/* card product start */}
             {products.length > 0 &&
               products.map((product) => (

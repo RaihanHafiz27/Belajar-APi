@@ -99,7 +99,7 @@ export const Navbar = () => {
             {navbarItems.map((item, index) => (
               <li key={index} className="my-1 ">
                 <Link
-                  className="flex items-center px-2 py-2 text-xs font-semibold leading-snug uppercase rounded-lg bg-amber-600 font-Roboto hover:bg-amber-800"
+                  className="flex items-center px-2 py-2 text-xs font-semibold leading-snug uppercase bg-orange-400 rounded-lg font-Roboto hover:bg-amber-600"
                   to={item.to}
                 >
                   <i className="">{item.icon}</i>
@@ -107,6 +107,17 @@ export const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li className="">
+              <Button
+                classname="flex items-center w-full px-2 py-2 text-xs font-semibold leading-snug uppercase bg-orange-400 rounded-lg font-Roboto hover:bg-amber-600"
+                onClick={handleLogout}
+              >
+                <i className="">{<LogoutIcon />}</i>
+                <span className="ml-2 underline underline-offset-4">
+                  Logout
+                </span>
+              </Button>
+            </li>
           </ul>
         </div>
       </div>

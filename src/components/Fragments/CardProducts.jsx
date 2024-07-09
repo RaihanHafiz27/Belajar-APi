@@ -6,7 +6,7 @@ export const CardProducts = (props) => {
 
   return (
     <div
-      className="flex flex-col justify-between p-2 md:rounded-lg"
+      className="flex flex-col justify-between p-2 transition-transform duration-500 transform md:rounded-lg hover:scale-110"
       style={{
         boxShadow: "1px 1px 4px rgba(0,0,0,0.2)",
       }}

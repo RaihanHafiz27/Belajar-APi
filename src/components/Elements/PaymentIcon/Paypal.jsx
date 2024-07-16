@@ -9,7 +9,7 @@ export const PaypalIcon = () => {
       version="1.1"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
-      className="w-10"
+      className="w-8"
     >
       <path
         fill="#1B557D"

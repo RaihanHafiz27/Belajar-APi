@@ -7,47 +7,50 @@ export const RadioCardDelivery = (props) => {
   const radios = [
     {
       price: 15,
-      description: "Kirim Cepat dan Aman, Tanpa Batasan Waktu",
+      description:
+        "J&T Express Cepat, Aman, dan Tepat Waktu – Pengiriman Impian Anda.",
       icon: "/images/delivery/J&T_Express.png",
     },
     {
       price: 5,
-      description: "Pengiriman Tepat Waktu, Pasti Sampai Tujuan",
+      description: "Lion Parcel Pengiriman Tepat Waktu, Pasti Sampai Tujuan.",
       icon: "/images/delivery/Lion_Parcel.png",
     },
     {
       price: 12,
-      description: "Solusi Cepat dan Handal untuk Pengiriman",
+      description: "Ninja Xpress Solusi Cepat dan Handal untuk Pengiriman.",
       icon: "/images/delivery/Ninja_Xpress.png",
     },
     {
       price: 2,
-      description: "Kirim Mudah, Cepat, dan Aman, Kepuasan Anda",
+      description: "Anter Aja Mengantar Paket Anda dengan Penuh Perhatian.",
       icon: "/images/delivery/AnterAja.png",
     },
     {
       price: 20,
-      description: "Kirim Mudah, Cepat, dan Aman, Kepuasan Anda",
+      description: "SiCepat Pengiriman Kilat, Senyuman Sepanjang Jalan.",
       icon: "/images/delivery/SiCepat.png",
     },
     {
       price: 14,
-      description: "Kirim Mudah, Cepat, dan Aman, Kepuasan Anda",
+      description:
+        "JNE Express Mengirimkan dengan Cepat, Menjaga dengan Cermat.",
       icon: "/images/delivery/JNE_Express.png",
     },
     {
       price: 6,
-      description: "Kirim Mudah, Cepat, dan Aman, Kepuasan Anda",
+      description: "TiKi Menjangkau Dunia, Untuk Menghubungkan Anda.",
       icon: "/images/delivery/TiKi.png",
     },
     {
       price: 17,
-      description: "Kirim Mudah, Cepat, dan Aman, Kepuasan Anda",
-      icon: "/images/delivery/GoSend.png",
+      description: "GoSend Mengirimkan Kepuasan, Menyampaikan Kepercayaan.",
+      icon: "/images/delivery/Gosend.png",
     },
     {
       price: 8,
-      description: "Kirim Mudah, Cepat, dan Aman, Kepuasan Anda",
+      description:
+        "Sentral Cargo Setiap Paket, Setiap Waktu, Kami Siap Melayani.",
       icon: "/images/delivery/Sentral_Cargo.png",
     },
   ];
@@ -82,19 +85,19 @@ export const RadioCardDelivery = (props) => {
                     <img
                       src={item.icon}
                       alt=""
-                      className="h-8 border 2xl:h-12 lg:w-16 2xl:w-24"
+                      className="h-8 border 2xl:h-auto lg:w-16 2xl:w-24"
                     />
                   </div>
-                  <div>
+                  <div className="border">
                     <h3 className="pr-3 text-sm font-medium leading-none text-teal-600 2xl:text-base">
                       $ {item.price}
                     </h3>
                     <p className="mt-1 text-xs text-gray-600 2xl:text-sm">
-                      {item.description.substring(0, 50)}
+                      {item.description}
                     </p>
                   </div>
                 </div>
-                <div className="absolute flex items-center justify-center flex-none w-4 h-4 text-white duration-200 border rounded-full top-4 right-4 peer-checked:bg-indigo-600 peer-checked:text-white">
+                {/* <div className="absolute flex items-center justify-center flex-none w-4 h-4 text-white duration-200 border rounded-full top-4 right-4 peer-checked:bg-indigo-600 peer-checked:text-white">
                   <svg className="w-2.5 h-2.5" viewBox="0 0 12 10">
                     <polyline
                       fill="none"
@@ -104,7 +107,7 @@ export const RadioCardDelivery = (props) => {
                       points="1.5 6 4.5 9 10.5 1"
                     ></polyline>
                   </svg>
-                </div>
+                </div> */}
               </label>
             </li>
           ))}

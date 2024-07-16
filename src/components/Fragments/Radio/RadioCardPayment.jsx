@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { BCAIcon } from "../../Elements/payment/BCA";
-import { MandiriIcon } from "../../Elements/payment/Mandiri";
-import { BRiIcon } from "../../Elements/payment/BRI";
-import { PaypalIcon } from "../../Elements/payment/Paypal";
-import { CIMBIcon } from "../../Elements/payment/CIMB";
+import { BCAIcon } from "../../Elements/PaymentIcon/BCA";
+import { BRiIcon } from "../../Elements/PaymentIcon/BRI";
+import { MandiriIcon } from "../../Elements/PaymentIcon/Mandiri";
+import { CIMBIcon } from "../../Elements/PaymentIcon/CIMB";
+import { QRIcon } from "../../Elements/PaymentIcon/QRCode";
+import { CODIcon } from "../../Elements/PaymentIcon/COD";
 
 export const RadioCardPayment = ({ onPaymentMethodChange }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
 
   const paymentMethods = [
     { id: 1, name: "BANK CENTRAL ASIA", icon: <BCAIcon /> },
-    { id: 2, name: "BANK MANDIRI", icon: <MandiriIcon /> },
-    { id: 3, name: "BANK RAKYAT INDONESIA", icon: <BRiIcon /> },
-    { id: 5, name: "BANK JAWA BARAT", icon: <PaypalIcon /> },
-    { id: 6, name: "CIMB", icon: <CIMBIcon /> },
+    { id: 2, name: "BANK RAKYAT INDONESIA", icon: <BRiIcon /> },
+    { id: 3, name: "BANK MANDIRI", icon: <MandiriIcon /> },
+    { id: 4, name: "CIMB", icon: <CIMBIcon /> },
+    { id: 5, name: "QR CODE", icon: <QRIcon /> },
+    { id: 6, name: "CASH ON DELIVERY (COD)", icon: <CODIcon /> },
   ];
 
   const handleRadioChange = (method) => {
@@ -22,9 +24,9 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
   };
 
   return (
-    <div className="w-1/5 font-semibold border-2 border-yellow-400 ">
+    <div className="flex items-center justify-center w-1/5 font-semibold border-2 border-yellow-400 ">
       <div className="flex-grow border border-green-500">
-        <ul className="grid grid-cols-1 gap-1">
+        <ul className="grid grid-cols-1 gap-y-3">
           {paymentMethods.map((item) => (
             <li key={item.id} className="max-w-xs border-2 border-black">
               <label htmlFor={item.name} className="relative block">
@@ -38,7 +40,7 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
                 <div className="flex items-center w-full h-10 p-2 duration-200 bg-white border rounded-lg shadow-sm cursor-pointer gap-x-3 ring-indigo-600 peer-checked:ring-2">
                   <div className="flex-none">{item.icon}</div>
                   <div>
-                    <h3 className="text-sm font-medium leading-none text-gray-800 2xl:text-base">
+                    <h3 className="text-sm font-medium leading-none text-gray-800">
                       {item.name}
                     </h3>
                   </div>

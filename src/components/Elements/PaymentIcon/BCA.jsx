@@ -8,7 +8,7 @@ export const BCAIcon = () => {
       width="100"
       height="72"
       viewBox="0 0 100 72"
-      className="w-10"
+      className="w-8"
     >
       <defs>
         <rect

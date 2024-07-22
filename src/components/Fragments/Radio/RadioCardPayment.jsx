@@ -5,6 +5,7 @@ import { MandiriIcon } from "../../Elements/PaymentIcon/Mandiri";
 import { CIMBIcon } from "../../Elements/PaymentIcon/CIMB";
 import { QRIcon } from "../../Elements/PaymentIcon/QRCode";
 import { CODIcon } from "../../Elements/PaymentIcon/COD";
+import { PaypalIcon } from "../../Elements/PaymentIcon/Paypal";
 
 export const RadioCardPayment = ({ onPaymentMethodChange }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
@@ -13,9 +14,10 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
     { id: 1, name: "BANK CENTRAL ASIA", icon: <BCAIcon /> },
     { id: 2, name: "BANK RAKYAT INDONESIA", icon: <BRiIcon /> },
     { id: 3, name: "BANK MANDIRI", icon: <MandiriIcon /> },
-    { id: 4, name: "CIMB", icon: <CIMBIcon /> },
-    { id: 5, name: "QR CODE", icon: <QRIcon /> },
-    { id: 6, name: "CASH ON DELIVERY (COD)", icon: <CODIcon /> },
+    { id: 4, name: "PAYPAL", icon: <PaypalIcon /> },
+    { id: 5, name: "CIMB", icon: <CIMBIcon /> },
+    { id: 6, name: "QR CODE", icon: <QRIcon /> },
+    { id: 7, name: "CASH ON DELIVERY (COD)", icon: <CODIcon /> },
   ];
 
   const handleRadioChange = (method) => {
@@ -61,11 +63,11 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
           ))}
         </ul>
       </div>
-      {selectedPaymentMethod && (
+      {/* {selectedPaymentMethod && (
         <div className="mt-4">
           <p>Selected Payment Method: {selectedPaymentMethod}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -5,11 +5,21 @@ import { NavbarTitle } from "../components/Elements/Brand/NavbarTitle";
 import { DeleteIcon } from "../assets/Icons/DeleteIcon";
 import { RadioCardDelivery } from "../components/Fragments/Radio/RadioCardDelivery";
 import { RadioCardPayment } from "../components/Fragments/Radio/RadioCardPayment";
+import { DetailsPopup } from "../components/Fragments/Popups/DetailsCheckout";
+import { useNavigate } from "react-router-dom";
+import QRCodePopup from "../components/Fragments/Popups/QRCodePopup";
+import VirtualAccountPopup from "../components/Fragments/Popups/VirtualAccountPopup";
+import CODPopup from "../components/Fragments/Popups/CODPopup";
 
 export const CartPage = () => {
   const { cart, removeFromCart } = useContext(CartContext);
   const [selectedDelivery, setSelectedDelivery] = useState(0);
   const [voucherDiscount, setVoucherDiscount] = useState(0);
+  const [paymentMetode, setPaymentMetode] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupContent, setPopupContent] = useState(null);
+  const [transactionDetails, setTransactionDetails] = useState(null);
+  const navigate = useNavigate();
 
   const handleApplyVoucher = (event) => {
     event.preventDefault();
@@ -35,8 +45,39 @@ export const CartPage = () => {
 
   console.log(cart);
 
+  const handlePaymentMethodChange = (method) => {
+    setPaymentMetode(method);
+  };
+
   const handleDelivery = (price) => {
     setSelectedDelivery(price);
+  };
+
+  const handleCheckout = () => {
+    const transactionData = {
+      cart,
+      selectedDelivery,
+      costDamage,
+      voucherDiscount,
+      totalAmount,
+      paymentMetode,
+      transactionCode: "JQ4B75F", // This should be generated dynamically
+      barcode: "123456789", // Example barcode
+      virtualAccount: "987654321", // Example VA
+    };
+    if (paymentMetode === "QR CODE") {
+      setPopupContent(<QRCodePopup data={transactionData} />);
+    } else if (paymentMetode === "CASH ON DELIVERY (COD)") {
+      setPopupContent(<CODPopup data={transactionData} />);
+    } else {
+      setPopupContent(<VirtualAccountPopup data={transactionData} />);
+    }
+    setTransactionDetails(transactionData);
+
+    // navigate("/detailsTransaction", {
+    //   state: { transactionDetails: transactionData },
+    // });
+    setShowPopup(true);
   };
 
   return (
@@ -128,7 +169,9 @@ export const CartPage = () => {
                 </div>
               )}
             </div>
-            <RadioCardPayment />
+            <RadioCardPayment
+              onPaymentMethodChange={handlePaymentMethodChange}
+            />
           </div>
           <div className="flex flex-col w-full mt-2 border border-black ">
             <div className="flex justify-between border border-gray-700">
@@ -196,18 +239,44 @@ export const CartPage = () => {
                       <p className="">$ {totalAmount}</p>
                     </div>
                   </div>
-                  <div className="w-full py-1 mt-3 bg-orange-100 rounded-lg">
-                    <p className="text-sm font-semibold text-center text-gray-400 uppercase 2xl:text-base lg:text-xs">
-                      Sale Expiring in :{" "}
-                      <span className="text-orange-500">23 H, 13 Min</span>
-                    </p>
+                  <div className="flex items-center justify-center w-full pt-2">
+                    <button
+                      className="w-1/2 py-1 bg-orange-300 rounded-md hover:bg-orange-400"
+                      onClick={handleCheckout}
+                    >
+                      Checkout
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          {showPopup && (
+            <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+              <div className="flex flex-col justify-center max-w-md p-6 bg-white rounded-lg shadow-lg">
+                {popupContent}
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="px-4 py-2 mt-4 text-white bg-orange-400 rounded"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
+      {/* {showPopup && (
+        <DetailsPopup
+          totalAmount={totalAmount}
+          totalHarga={totalHarga}
+          selectedDelivery={selectedDelivery}
+          costDamage={costDamage}
+          voucherDiscount={voucherDiscount}
+          paymentMetode={paymentMetode}
+          onClose={() => setShowPopup(false)}
+        />
+      )} */}
     </div>
   );
 };

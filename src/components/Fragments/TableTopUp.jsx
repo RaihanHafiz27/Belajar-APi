@@ -4,7 +4,7 @@ import { TotalTopUp } from "../../context/TotalTopUp";
 import { ErrorPopUp } from "./Popups/ErrorPopUp";
 
 export const TableTopUp = ({ handlePurchase }) => {
-  const [activeColumn, setActiveColumn] = useState("Pulsa");
+  const [activeColumn, setActiveColumn] = useState("Credit");
   const { total, setTotal } = useContext(TotalTopUp);
 
   const handleColumnClick = (column) => {
@@ -27,10 +27,10 @@ export const TableTopUp = ({ handlePurchase }) => {
 
   const getPlaceholder = (column, field) => {
     const placeholders = {
-      Pulsa: { number: "Masukan Nomor" },
-      "Paket Data": { number: "Masukan Nomor" },
-      Donasi: { number: "Masukan Virtual Account" },
-      "Top Up Game": { number: "Masukan ID" },
+      Credit: { number: "Input Number Phone" },
+      "Data Package": { number: "Input Number Phone" },
+      Donation: { number: "Input VA" },
+      "Top Up Games": { number: "Input ID" },
     };
     return placeholders[column][field];
   };
@@ -38,13 +38,13 @@ export const TableTopUp = ({ handlePurchase }) => {
   return (
     <div className="hidden w-full mx-auto lg:flex-col lg:flex lg:w-1/2">
       <p className="my-4 text-sm tracking-wide text-center text-gray-600 font-Roboto">
-        Silahkan top up disini yang aman, mudah, dan terpercaya.
+        Please top up here which is safe, easy, and reliable.
       </p>
       <div className="hidden w-full border lg:flex rounded-xl">
         <table className="w-full m-2">
           <thead>
             <tr className="border-b">
-              {["Pulsa", "Paket Data", "Donasi", "Top Up Game"].map(
+              {["Credit", "Data Package", "Donation", "Top Up Games"].map(
                 (column) => (
                   <th
                     key={column}
@@ -68,10 +68,10 @@ export const TableTopUp = ({ handlePurchase }) => {
                       htmlFor="number"
                       className="my-1 text-sm font-semibold text-gray-500"
                     >
-                      {activeColumn === "Pulsa" && "Nomor Telepon"}
-                      {activeColumn === "Paket Data" && "Nomor Telepon"}
-                      {activeColumn === "Donasi" && "Nomor Virtual Account"}
-                      {activeColumn === "Top Up Game" && "Game ID"}
+                      {activeColumn === "Credit" && "Number"}
+                      {activeColumn === "Data Package" && "Number"}
+                      {activeColumn === "Donation" && "Virtual Account"}
+                      {activeColumn === "Top Up Games" && "Games ID"}
                     </label>
                     <input
                       type="text"
@@ -88,7 +88,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                       htmlFor="amount"
                       className="my-1 text-sm font-semibold text-gray-500"
                     >
-                      Pilih Nominal
+                      Select Nominal
                     </label>
                     <select
                       id="amount"
@@ -98,7 +98,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                       className="w-full p-2 text-sm border border-gray-200 rounded outline-none"
                     >
                       <option value="" disabled hidden>
-                        Pilih Nominal
+                        Select Nominal
                       </option>
                       <option value="Rp.10000">Rp. 10,000</option>
                       <option value="Rp.20000">Rp. 20,000</option>
@@ -118,7 +118,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                     onClick={handlePurchaseClick} // Menggunakan handlePurchaseClick untuk memanggil handlePurchase
                     className="w-1/2 p-2 text-white rounded bg-amber-600 hover:bg-amber-700"
                   >
-                    Beli
+                    Buy Now
                   </button>
                 </div>
               </td>

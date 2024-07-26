@@ -6,22 +6,22 @@ import { ProfileIcon } from "../../../assets/Icons/ProfileIcon";
 import { CartIcon } from "../../../assets/Icons/CartIcon";
 import { LogoutIcon } from "../../../assets/Icons/LogoutIcon";
 import { CloseIcon } from "../../../assets/Icons/CloseIcon";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ProductsIcon } from "../../../assets/Icons/ProductsIcon";
 
 const navbarItems = [
   {
-    icon: <ProductsIcon />,
+    icon: <ProductsIcon className="navbar-icon" />,
     text: "Products",
     to: "/products",
   },
   {
-    icon: <CartIcon />,
+    icon: <CartIcon className="navbar-icon" />,
     text: "Cart",
     to: "/cart",
   },
   {
-    icon: <ProfileIcon />,
+    icon: <ProfileIcon className="navbar-icon" />,
     text: "Profile",
     to: "/profile",
   },
@@ -29,14 +29,24 @@ const navbarItems = [
 
 export const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation();
 
   const handleLogout = () => {
     window.location.href = "/";
     localStorage.removeItem("token");
   };
 
+  const isHome = location.pathname === "/test";
+
   return (
-    <nav className="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-3 2xl:p-5 ">
+    // fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-3 2xl:p-5
+    <nav
+      className={`fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 lg:p-3 2xl:p-5 ${
+        isHome
+          ? "bg-transparent border-b-2 border-gray-600 text-slate-200"
+          : "bg-orange-300"
+      }`}
+    >
       <div className="flex flex-wrap items-center justify-between w-full">
         <div className="relative flex items-center justify-between w-full lg:block lg:justify-start lg:static lg:w-auto">
           <NavbarTitle classname="w-auto " />

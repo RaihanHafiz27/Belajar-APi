@@ -40,3 +40,7 @@ th::after {
 th.active::after {
   transform: scaleX(1);
 }
+
+.navbar-icon {
+  color: inherit;
+}

@@ -8,7 +8,7 @@ export const ProductsIcon = () => {
       height="137"
       fill="none"
       viewBox="0 0 155 137"
-      className="size-6"
+      className="size-6 "
     >
       <path
         fill="#000"

@@ -91,7 +91,7 @@ export const ProductsPage = () => {
         <div className="w-full h-auto p-2 bg-white md:mx-auto md:rounded-xl lg:w-11/12 2xl:w-3/5">
           <div className="flex justify-around py-2 border-b border-gray-400 font-Roboto">
             <h2 className="text-sm font-semibold lg:text-xl">
-              Kategori Pilihan
+              Preferred Category
             </h2>
             <h2 className="hidden text-sm font-semibold lg:block lg:text-xl">
               Top up
@@ -107,7 +107,7 @@ export const ProductsPage = () => {
         </div>
         <div className="w-full h-auto my-2 bg-white md:mx-auto md:p-2 md:rounded-xl lg:w-11/12 2xl:w-3/5">
           <h2 className="p-2 font-semibold font-Roboto lg:text-xl">
-            Trending Minggu ini.
+            Trending this week.
           </h2>
           <div className="grid grid-cols-2 gap-4 px-2 md:px-0 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
             {/* card product start */}

@@ -28,7 +28,7 @@ const categorylist = {
       image: "/images/online-shopping.png",
     },
     {
-      title: "Tiket Kereta",
+      title: "Train Tickets",
       image: "/images/train.png",
     },
     {

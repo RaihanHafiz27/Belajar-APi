@@ -5,7 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginPage } from "./pages/login.jsx";
 import { RegisterPage } from "./pages/register.jsx";
 import { ProductsPage } from "./pages/products.jsx";
-import Testpage from "./pages/test.jsx";
+import { TestPage } from "./pages/test.jsx";
+
 import TotalTopUpContextProvider from "./context/TotalTopUp.jsx";
 import { CartPage } from "./pages/cart.jsx";
 import { ProfilePage } from "./pages/Profile.jsx";
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test",
-    element: <Testpage />,
+    element: <TestPage />,
   },
 ]);
 

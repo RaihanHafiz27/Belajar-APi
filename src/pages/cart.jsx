@@ -37,31 +37,31 @@ export const CartPage = () => {
     <div className="flex flex-col w-full min-h-screen ">
       <Navbar />
       <div className="flex items-center justify-center flex-grow mt-16 bg-gray-200 border-2 border-black 2xl:mt-20">
-        <div className="w-full border-2 border-pink-600 lg:w-11/12 2xl:w-4/5">
-          <div className="flex justify-between w-full ">
+        <div className="w-full my-2 border-2 border-pink-600 2xl:my-0 lg:w-11/12 2xl:w-4/5">
+          {/* <div className="flex justify-between w-full ">
             <h2 className="font-semibold border border-black lg:w-4/6 2xl:w-3/4 2xl:text-2xl font-Roboto ">
               List Order
             </h2>
             <h2 className="font-semibold border border-black lg:w-1/4 2xl:w-1/5 2xl:text-2xl font-Roboto ">
               Payment Method
             </h2>
-          </div>
-          <div className="flex justify-between w-full border border-gray-700">
+          </div> */}
+          <div className="flex flex-col justify-between w-full border border-gray-700 lg:flex-row">
             <CartList cart={cart} removeFromCart={removeFromCart} />
             <RadioCardPayment
               onPaymentMethodChange={handlePaymentMethodChange}
             />
           </div>
-          <div className="flex flex-col w-full mt-2 border border-black ">
-            <div className="flex justify-between border border-gray-700">
-              <h2 className="w-1/2 font-semibold border border-pink-500 font-Roboto 2xl:text-2xl">
+          <div className="flex w-full mt-2 border border-black ">
+            {/* <div className="flex justify-between border border-gray-700">
+              <h2 className="font-semibold border border-pink-500 lg:w-4/6 2xl:w-3/4 font-Roboto 2xl:text-2xl">
                 Delivery
               </h2>
-              <h2 className="w-1/5 font-semibold border border-pink-500 font-Roboto 2xl:text-2xl">
+              <h2 className="font-semibold border border-pink-500 lg:w-1/4 2xl:w-1/5 font-Roboto 2xl:text-2xl">
                 Payment Summary
               </h2>
-            </div>
-            <div className="flex justify-between flex-grow border border-gray-900">
+            </div> */}
+            <div className="flex flex-col justify-between flex-grow border border-gray-900 lg:flex-row">
               {/* Start Selected Delivery */}
               <RadioCardDelivery onPriceChange={handleDelivery} />
               {/* End Selected Delivery */}

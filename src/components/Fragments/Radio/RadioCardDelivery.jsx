@@ -8,7 +8,7 @@ export const RadioCardDelivery = (props) => {
     {
       price: 15,
       description:
-        "J&T Express Cepat, Aman, dan Tepat Waktu – Pengiriman Impian Anda.",
+        "J&T Express Cepat, Aman, dan Tepat Waktu  Pengiriman Impian Anda.",
       icon: "/images/delivery/J&T_Express.png",
     },
     {
@@ -28,7 +28,8 @@ export const RadioCardDelivery = (props) => {
     },
     {
       price: 20,
-      description: "SiCepat Pengiriman Kilat, Senyuman Sepanjang Jalan.",
+      description:
+        "SiCepat Pengiriman Kilat, Senyuman Sepanjang Hari Untuk Anda.",
       icon: "/images/delivery/SiCepat.png",
     },
     {
@@ -63,9 +64,12 @@ export const RadioCardDelivery = (props) => {
   console.log(selectedPrice);
 
   return (
-    <div className="flex items-center font-semibold border-2 border-yellow-400 lg:w-4/6 2xl:w-3/4 ">
-      <div className="flex-grow border border-green-500">
-        <ul className="grid grid-cols-3 gap-3 2xl:gap-2">
+    <div className="flex flex-col items-center font-semibold border-2 border-yellow-400 lg:w-4/6 2xl:w-3/4 ">
+      <h2 className="w-full font-semibold text-center border border-pink-500 lg:text-start font-Roboto 2xl:text-2xl">
+        Delivery
+      </h2>
+      <div className="w-full border border-green-500">
+        <ul className="grid grid-cols-2 gap-1 lg:gap-2 lg:grid-cols-3 2xl:gap-2">
           {radios.map((item, idx) => (
             <li
               key={idx}
@@ -80,19 +84,19 @@ export const RadioCardDelivery = (props) => {
                   className="sr-only peer"
                   onClick={() => handleRadioChange(item.price)}
                 />
-                <div className="flex items-start w-full p-4 duration-200 bg-white border rounded-lg shadow-sm cursor-pointer gap-x-3 ring-teal-600 peer-checked:ring-2">
+                <div className="flex items-center justify-between w-full gap-1 p-1 duration-200 bg-white border rounded-lg shadow-sm cursor-pointer md:items-start md:justify-normal lg:p-2 2xl:p-4 lg:gap-x-3 ring-teal-600 peer-checked:ring-2">
                   <div className="flex-none">
                     <img
                       src={item.icon}
                       alt=""
-                      className="h-8 border 2xl:h-auto lg:w-16 2xl:w-24"
+                      className="w-20 h-6 border lg:h-8 2xl:h-auto lg:w-16 2xl:w-24"
                     />
                   </div>
                   <div className="border">
-                    <h3 className="pr-3 text-sm font-medium leading-none text-teal-600 2xl:text-base">
+                    <h3 className="text-sm font-bold leading-none text-teal-600 lg:pr-3 lg:font-medium 2xl:text-base">
                       $ {item.price}
                     </h3>
-                    <p className="mt-1 text-xs text-gray-600 2xl:text-sm">
+                    <p className="hidden mt-1 text-xs text-gray-600 2xl:text-sm md:block">
                       {item.description}
                     </p>
                   </div>

@@ -26,11 +26,17 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
   };
 
   return (
-    <div className="flex items-center justify-center w-1/5 font-semibold border-2 border-yellow-400 ">
-      <div className="flex-grow border border-green-500">
-        <ul className="grid grid-cols-1 gap-y-3">
+    <div className="flex flex-col items-center justify-center w-full mt-2 font-semibold border-2 border-yellow-400 lg:mt-0 lg:w-1/4 2xl:w-1/5 ">
+      <h2 className="w-full font-semibold text-center border border-black lg:text-start 2xl:text-2xl font-Roboto ">
+        Payment Method
+      </h2>
+      <div className="w-full border border-green-500">
+        <ul className="grid grid-cols-1 gap-y-1.5">
           {paymentMethods.map((item) => (
-            <li key={item.id} className="max-w-xs border-2 border-black">
+            <li
+              key={item.id}
+              className="w-full border-2 border-black 2xl:max-w-xs"
+            >
               <label htmlFor={item.name} className="relative block">
                 <input
                   id={item.name}
@@ -39,7 +45,7 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
                   className="sr-only peer"
                   onClick={() => handleRadioChange(item.name)}
                 />
-                <div className="flex items-center w-full h-10 p-2 duration-200 bg-white border rounded-lg shadow-sm cursor-pointer gap-x-3 ring-indigo-600 peer-checked:ring-2">
+                <div className="flex items-center w-full h-10 p-2 duration-200 bg-white border rounded-lg shadow-sm cursor-pointer lg:h-8 2xl:h-10 gap-x-3 ring-indigo-600 peer-checked:ring-2">
                   <div className="flex-none">{item.icon}</div>
                   <div>
                     <h3 className="text-sm font-medium leading-none text-gray-800">

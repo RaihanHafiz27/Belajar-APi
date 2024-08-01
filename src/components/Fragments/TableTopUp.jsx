@@ -116,7 +116,7 @@ export const TableTopUp = ({ handlePurchase }) => {
                 <div className="flex items-center justify-center w-full">
                   <button
                     onClick={handlePurchaseClick} // Menggunakan handlePurchaseClick untuk memanggil handlePurchase
-                    className="w-1/2 p-2 text-white rounded bg-amber-600 hover:bg-amber-700"
+                    className="w-1/2 p-2 text-white bg-orange-400 rounded hover:bg-orange-500"
                   >
                     Buy Now
                   </button>

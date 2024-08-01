@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { SignInWith } from "../Fragments/SignInWith";
 import { useState } from "react";
 import { NavbarTitle } from "../Elements/Brand/NavbarTitle";
+import TypewriterComponent from "typewriter-effect";
 
 export const AuthLayouts = (props) => {
   const { children } = props;
@@ -13,7 +14,7 @@ export const AuthLayouts = (props) => {
     >
       <div className="absolute w-full h-full lg:flex">
         <div className="flex flex-col h-5/6 lg:h-full lg:w-1/2">
-          <NavbarTitle classname="p-5" />
+          <NavbarTitle classname="p-5 text-amber-800" />
           <div className="flex items-center justify-center flex-grow w-full ">
             <div
               className="flex flex-col items-center justify-center w-11/12 bg-white rounded-xl lg:w-3/5 2xl:w-1/2 "
@@ -47,7 +48,17 @@ const Navigation = () => {
   return (
     <div className="my-4 text-center 2xl:my-6">
       <p className="my-2 text-lg font-semibold 2xl:my-5 lg:text-xl 2xl:text-2xl font-Poopins text-amber-600">
-        WELCOME TO LUXURA
+        <TypewriterComponent
+          options={{
+            strings: ["Welcome to LUXURA"],
+            autoStart: true,
+            loop: true,
+            delay: 250, // Menyesuaikan kecepatan pengetikan
+            deleteSpeed: 50, // Menyesuaikan kecepatan penghapusan
+            cursor: "|", // Mengubah tampilan cursor
+            cursorClassName: "Typewriter__cursor", // Menggunakan class untuk lebih mengontrol gaya cursor
+          }}
+        />
       </p>
       <Link
         to={"/"}

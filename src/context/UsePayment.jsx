@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { EmptyCartPopup } from "../components/Fragments/Popups/EmptyCart";
 import QRCodePopup from "../components/Fragments/Popups/QRCodePopup";
 import CODPopup from "../components/Fragments/Popups/CODPopup";

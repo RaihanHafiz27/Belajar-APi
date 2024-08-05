@@ -12,15 +12,15 @@ export const getProducts = (callback) => {
 };
 
 export const getDetailsProducts = (id, callback) => {
-  console.log(`Fetching product with ID: ${id}`); // Debugging
+  // console.log(`Fetching product with ID: ${id}`); // Debugging
   axios
     .get(`https://fakestoreapi.in/api/products/${id}`)
     .then((res) => {
-      console.log(res.data.product);
+      // console.log(res.data.product);
       callback(res.data.product);
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
       callback(error);
     });
 };

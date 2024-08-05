@@ -2,7 +2,6 @@ import { useState } from "react";
 import { login } from "../../../services/login.service";
 import { Button } from "../../Elements/Button/Button";
 import { InputForm } from "../../Elements/Input/Index";
-import { getDataUser } from "../../../services/users.service";
 
 export const FormLogin = () => {
   const [isLoginFailed, setIsLoginFailed] = useState("");
@@ -18,7 +17,7 @@ export const FormLogin = () => {
     login(data, (status, token) => {
       if (status) {
         localStorage.setItem("token", token);
-        window.location.href = "/products";
+        window.location.href = "/home";
       } else {
         setIsLoginFailed(token);
       }
@@ -41,7 +40,7 @@ export const FormLogin = () => {
       />
       <Button type="submit">Login</Button>
       {isLoginFailed && (
-        <p className="mb-2 text-center text-red-600 font-Roboto">
+        <p className="mt-2 text-center text-red-600 font-Roboto">
           {isLoginFailed}
         </p>
       )}

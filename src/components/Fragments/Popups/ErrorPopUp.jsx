@@ -6,7 +6,7 @@ export const ErrorPopUp = ({ isOpen, closeModal, children }) => {
     <>
       <div className="fixed inset-0 z-40 bg-black opacity-50"></div>
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-        <div className="relative w-1/4 max-w-lg mx-auto">
+        <div className="relative max-w-xs mx-auto lg:w-1/4">
           {/* Content Modal */}
           <div className="relative p-6 bg-white shadow-xl rounded-xl">
             <button
@@ -25,25 +25,5 @@ export const ErrorPopUp = ({ isOpen, closeModal, children }) => {
         </div>
       </div>
     </>
-    // <>
-    //   <div className="fixed inset-0 z-40 bg-black opacity-50"></div>
-    //   <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-    //     <div className="relative w-1/4 max-w-lg mx-auto">
-    //       <div className="relative p-6 bg-white shadow-xl rounded-xl">
-    //         <div className="flex flex-col border">
-    //           <button
-    //             className="absolute top-0 right-0 m-4 text-lg font-semibold text-gray-500 hover:text-gray-700"
-    //             onClick={closeModal}
-    //           >
-    //             Close
-    //           </button>
-    //           <div className="flex flex-col items-center justify-center">
-    //             {children}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
   );
 };

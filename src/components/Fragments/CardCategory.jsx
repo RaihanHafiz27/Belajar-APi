@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const categorylist = {
@@ -28,7 +27,7 @@ const categorylist = {
       image: "/images/online-shopping.png",
     },
     {
-      title: "Train Tickets",
+      title: "Tickets",
       image: "/images/train.png",
     },
     {
@@ -42,7 +41,10 @@ export const CardCategory = () => {
   return (
     <div className="grid w-full grid-cols-4 gap-2">
       {categorylist.category.map((item, index) => (
-        <Link key={index} className="flex flex-col items-center justify-center">
+        <Link
+          key={index}
+          className="flex flex-col items-center justify-center p-2"
+        >
           <div className="p-2 transition-all duration-300 bg-gray-200 rounded-full hover:bg-gray-400 ">
             <img
               src={item.image}

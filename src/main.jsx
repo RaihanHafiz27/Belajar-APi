@@ -5,14 +5,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginPage } from "./pages/login.jsx";
 import { RegisterPage } from "./pages/register.jsx";
 import { ProductsPage } from "./pages/products.jsx";
-import { TestPage } from "./pages/test.jsx";
-
 import TotalTopUpContextProvider from "./context/TotalTopUp.jsx";
 import { CartPage } from "./pages/cart.jsx";
-import { ProfilePage } from "./pages/Profile.jsx";
+import { ProfilePage } from "./pages/profile.jsx";
 import { DetailsProductPage } from "./pages/detailsProduct.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
-import { DetailsTransactionPage } from "./pages/detailsTransaction.jsx";
 import { HomePage } from "./pages/home.jsx";
 
 const router = createBrowserRouter([
@@ -43,14 +40,6 @@ const router = createBrowserRouter([
   {
     path: "/product/:id",
     element: <DetailsProductPage />,
-  },
-  {
-    path: "/detailsTransaction",
-    element: <DetailsTransactionPage />,
-  },
-  {
-    path: "/test",
-    element: <TestPage />,
   },
 ]);
 

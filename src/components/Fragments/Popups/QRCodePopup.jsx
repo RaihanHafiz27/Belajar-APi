@@ -7,7 +7,11 @@ const QRCodePopup = ({ data }) => {
         QR Code Payment
       </h2>
       {/* Replace this with actual QR code component */}
-      <img src="/images/qr.jpeg" alt="QR Code" className="w-96 h-96" />
+      <img
+        src="/images/qr.jpeg"
+        alt="QR Code"
+        className="w-60 h-60 lg:w-80 lg:h-80"
+      />
     </div>
   );
 };

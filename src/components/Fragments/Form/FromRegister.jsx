@@ -23,12 +23,12 @@ export const FormRegister = () => {
         placeholder="**********"
       />
       <InputForm
-        name="password"
-        type="password"
+        name="ConfirmPassword"
+        type="ConfirmPassword"
         label="Confirm Password"
         placeholder="**********"
       />
-      <Button classname="mb-5">Register</Button>
+      <Button>Register</Button>
     </form>
   );
 };

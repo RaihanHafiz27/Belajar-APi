@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
-import TotalTopUpContextProvider from "../../context/TotalTopUp";
 import { TotalTopUp } from "../../context/TotalTopUp";
-import { ErrorPopUp } from "./Popups/ErrorPopUp";
 
 export const TableTopUp = ({ handlePurchase }) => {
   const [activeColumn, setActiveColumn] = useState("Credit");

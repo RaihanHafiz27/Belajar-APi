@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavbarTitle } from "../components/Elements/Brand/NavbarTitle";
-import { Button } from "../components/Elements/Button/Button";
-import { HamburgerIcon } from "../assets/Icons/HamburgerIcon";
-import { ProfileIcon } from "../assets/Icons/ProfileIcon";
-import { CartIcon } from "../assets/Icons/CartIcon";
-import { LogoutIcon } from "../assets/Icons/LogoutIcon";
 import Carousel from "../components/Fragments/Carousel";
-import { CloseIcon } from "../assets/Icons/CloseIcon";
 import { CardCategory } from "../components/Fragments/CardCategory";
 import { TableTopUp } from "../components/Fragments/TableTopUp";
 import "../../src/styles.css"; // Impor file CSS
@@ -17,12 +10,6 @@ import { PopUp } from "../components/Fragments/Popups/PopUp";
 import { TotalTopUp } from "../context/TotalTopUp";
 import { ErrorPopUp } from "../components/Fragments/Popups/ErrorPopUp";
 import { Navbar } from "../components/Fragments/Navbar/Navbar";
-
-// const images = [
-//   "/images/carousel-1.jpg",
-//   "/images/carousel-2.jpg",
-//   "/images/carousel-3.jpg",
-// ];
 
 export const ProductsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -72,7 +59,7 @@ export const ProductsPage = () => {
   useEffect(() => {
     getProducts((data) => {
       setproducts(data);
-      console.log(data);
+      // console.log(data);
     });
   }, []);
 

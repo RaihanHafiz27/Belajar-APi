@@ -26,17 +26,14 @@ export const RadioCardPayment = ({ onPaymentMethodChange }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-2 font-semibold border-2 border-yellow-400 lg:mt-0 lg:w-1/4 2xl:w-1/5 ">
-      <h2 className="w-full font-semibold text-center border border-black lg:text-start 2xl:text-2xl font-Roboto ">
+    <div className="flex flex-col items-center justify-center w-full mt-2 font-semibold lg:mt-0 lg:w-1/4 2xl:w-1/5 ">
+      <h2 className="w-full font-semibold text-center lg:text-start 2xl:text-2xl font-Roboto ">
         Payment Method
       </h2>
-      <div className="w-full border border-green-500">
-        <ul className="grid grid-cols-1 gap-y-1.5">
+      <div className="w-full">
+        <ul className="grid grid-cols-1 gap-y-3">
           {paymentMethods.map((item) => (
-            <li
-              key={item.id}
-              className="w-full border-2 border-black 2xl:max-w-xs"
-            >
+            <li key={item.id} className="w-full 2xl:max-w-xs">
               <label htmlFor={item.name} className="relative block">
                 <input
                   id={item.name}

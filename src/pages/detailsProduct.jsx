@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDetailsProducts } from "../services/product.service";
 import { Navbar } from "../components/Fragments/Navbar/Navbar";
 import { Button } from "../components/Elements/Button/Button";
 import Gelombang from "../assets/Gelombang";
 import { CartContext } from "../context/CartContext";
+import { PopupAddCart } from "../components/Fragments/Popups/PopupAddCart";
+import { ErrorPopUp } from "../components/Fragments/Popups/ErrorPopUp";
 
 export const DetailsProductPage = () => {
   const { id } = useParams();
@@ -12,6 +14,10 @@ export const DetailsProductPage = () => {
   const [error, setError] = useState(null);
   const [qty, setQty] = useState(0);
   const { addToCart } = useContext(CartContext);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const [isErrorPopUpOpen, setIsErrorPopUpOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleQty = (type) => {
     if (type === "Increment" && qty < 10) {
@@ -49,6 +55,11 @@ export const DetailsProductPage = () => {
   const sumBuy = totalDiscount ? totalDiscount * qty : product.price * qty;
 
   const handleAddToCart = () => {
+    if (qty === 0) {
+      setErrorMessage("Quantity cannot be 0 !!!");
+      setIsErrorPopUpOpen(true);
+      return;
+    }
     const cartItem = {
       productId: id,
       image: product.image,
@@ -59,6 +70,18 @@ export const DetailsProductPage = () => {
       total: sumBuy,
     };
     addToCart(cartItem);
+    setPopupVisible(true);
+    setTimeout(() => setPopupVisible(false), 5000);
+  };
+
+  const handleBuyNow = () => {
+    if (qty === 0) {
+      setErrorMessage("Quantity cannot be 0 !!!");
+      setIsErrorPopUpOpen(true);
+      return;
+    }
+    handleAddToCart();
+    navigate("/cart");
   };
 
   return (
@@ -117,7 +140,7 @@ export const DetailsProductPage = () => {
             <div className="p-2 mb-4 bg-orange-300 rounded-md">
               <p className="text-sm font-semibold">Spesial Untuk Anda.</p>
             </div>
-            <div className="px-2 py-2 border border-gray-800 rounded-md 2xl:py-6 ">
+            <div className="px-2 py-2 border border-gray-400 rounded-md 2xl:py-6 ">
               <h4 className="text-lg font-semibold ">Atur jumlah pembelian</h4>
               <p>Stok Barang : 10838</p>
               <div className="flex items-center justify-between my-6">
@@ -147,14 +170,17 @@ export const DetailsProductPage = () => {
               </div>
               <div className="flex justify-around lg:flex-col">
                 <Button
-                  classname="w-2/5 rounded-md lg:w-full text-slate-200 lg:py-2"
+                  classname="w-2/5 rounded-lg lg:w-full text-slate-200 lg:py-2"
                   onClick={handleAddToCart}
                 >
                   + Keranjang
                 </Button>
-                <button className="w-2/5 py-1 my-2 border border-orange-400 rounded-lg lg:my-0 lg:w-full lg:py-2">
+                <Button
+                  classname="w-2/5 bg-transparent border border-orange-400 rounded-lg lg:my-0 lg:w-full lg:py-2 hover:bg-transparent"
+                  onClick={handleBuyNow}
+                >
                   Beli
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -163,6 +189,22 @@ export const DetailsProductPage = () => {
       <div className="hidden md:block">
         <Gelombang />
       </div>
+      {/* Error PopUp */}
+      {isErrorPopUpOpen && (
+        <ErrorPopUp
+          isOpen={isErrorPopUpOpen}
+          closeModal={() => setIsErrorPopUpOpen(false)}
+        >
+          {errorMessage}
+        </ErrorPopUp>
+      )}
+      {/* Popup Add to Cart */}
+      {isPopupVisible && (
+        <PopupAddCart
+          isOpen={isPopupVisible}
+          onClose={() => setPopupVisible(false)}
+        />
+      )}
     </div>
   );
 };

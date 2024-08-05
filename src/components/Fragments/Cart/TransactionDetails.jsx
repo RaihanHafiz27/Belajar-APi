@@ -9,11 +9,11 @@ export const TransactionDetails = (props) => {
     handleCheckout,
   } = props;
   return (
-    <div className="flex flex-col items-center justify-center py-2 mt-2 bg-white border border-orange-500 2xl:py-4 lg:mt-0 lg:w-1/4 2xl:w-1/5 font-Roboto">
+    <div className="flex flex-col items-center justify-center py-2 mt-2 bg-white rounded-md 2xl:py-4 lg:mt-0 lg:w-1/4 2xl:w-1/5 font-Roboto">
       <div className="w-11/12 py-1 bg-gray-200 rounded-lg">
         <h2 className="font-semibold text-center">Transaction Details</h2>
       </div>
-      <div className="flex-grow w-11/12 border">
+      <div className="flex-grow w-11/12">
         <div className="py-2 border-b border-gray-600 border-dashed lg:py-2 2xl:py-4">
           <div className="flex justify-between lg:text-sm 2xl:text-base">
             <p className="">Transaction Code</p>

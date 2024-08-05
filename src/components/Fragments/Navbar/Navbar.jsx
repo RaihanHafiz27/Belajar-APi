@@ -62,7 +62,7 @@ export const Navbar = () => {
     // fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 bg-orange-300 lg:p-3 2xl:p-5
     <nav
       className={`fixed top-0 z-50 flex flex-wrap items-center justify-between w-full p-2 lg:p-3 2xl:p-5 ${
-        isHome ? "bg-transparent border-b-2 border-gray-600 " : "bg-orange-300"
+        isHome ? "bg-transparent " : "bg-orange-300"
       }`}
     >
       <div className="flex flex-wrap items-center justify-between w-full">

@@ -8,7 +8,7 @@ export const PopUp = (props) => {
   const { total, setTotal } = useContext(TotalTopUp);
 
   useEffect(() => {
-    console.log(total); // Memastikan nilai total hanya di-log saat total berubah
+    // console.log(total); // Memastikan nilai total hanya di-log saat total berubah
   }, [total]);
 
   return (
@@ -30,11 +30,7 @@ export const PopUp = (props) => {
             <div className="flex flex-col items-center justify-center ">
               {/* Content dalam modal, seperti kode virtual account atau informasi pembayaran */}
               {/* <Payment /> */}
-              <img
-                src="/images/payment.gif"
-                alt=""
-                className="w-40 h-40 border"
-              />
+              <img src="/images/payment.gif" alt="" className="w-40 h-40" />
               <p>No Telpon : {total.notelp}</p>
               <p>Harga Pembelian {total.purchase}</p>
               <p className="">Kode Pembayaran : {virtualAccount}</p>
@@ -64,4 +60,4 @@ function generateVirtualAccount() {
 }
 
 const virtualAccount = generateVirtualAccount();
-console.log(virtualAccount);
+// console.log(virtualAccount);

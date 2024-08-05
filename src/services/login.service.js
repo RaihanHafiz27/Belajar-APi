@@ -8,7 +8,9 @@ export const login = (data, callback) => {
       callback(true, res.data.token);
     })
     .catch((error) => {
-      callback(false, error);
+      const errorMessage =
+        error.response?.data?.message || "username or password is incorrect";
+      callback(false, errorMessage);
     });
 };
 

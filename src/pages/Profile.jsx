@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { dataUser } from "../services/login.service";
-import { getDataUser } from "../services/users.service";
 import { Navbar } from "../components/Fragments/Navbar/Navbar";
-import { ProfileChsImg } from "../assets/Icons/ProfileChsImg";
 import { Button } from "../components/Elements/Button/Button";
 
 export const ProfilePage = () => {
@@ -44,13 +42,13 @@ export const ProfilePage = () => {
 
   return (
     <div
-      className="flex flex-col w-full min-h-screen bg-center bg-no-repeat bg-cover border-2 border-pink-500"
+      className="flex flex-col w-full min-h-screen bg-center bg-no-repeat bg-cover "
       style={{ backgroundImage: "url('/images/bg-profile.jpg')" }}
     >
       <Navbar />
-      <div className="flex items-center justify-center flex-grow mt-16 border-2 border-black 2xl:mt-20 ">
+      <div className="flex items-center justify-center flex-grow mt-16 2xl:mt-20 ">
         <div
-          className="w-full bg-white lg:rounded-lg lg:p-6 lg:w-3/5"
+          className="w-full mx-2 bg-white rounded-lg lg:p-6 lg:w-3/5"
           style={{
             boxShadow: "2px 2px 8px rgba(0,0,0,0.6)",
           }}

@@ -61,19 +61,19 @@ export const RadioCardDelivery = (props) => {
     onPriceChange(price);
   };
 
-  console.log(selectedPrice);
+  // console.log(selectedPrice);
 
   return (
-    <div className="flex flex-col items-center font-semibold border-2 border-yellow-400 lg:w-4/6 2xl:w-3/4 ">
-      <h2 className="w-full font-semibold text-center border border-pink-500 lg:text-start font-Roboto 2xl:text-2xl">
+    <div className="flex flex-col items-center font-semibold lg:w-4/6 2xl:w-3/4">
+      <h2 className="w-full font-semibold text-center lg:text-start font-Roboto 2xl:text-2xl">
         Delivery
       </h2>
-      <div className="w-full border border-green-500">
+      <div className="w-full">
         <ul className="grid grid-cols-2 gap-1 lg:gap-2 lg:grid-cols-3 2xl:gap-2">
           {radios.map((item, idx) => (
             <li
               key={idx}
-              className="max-w-sm transition-transform duration-500 transform md:rounded-lg hover:scale-110 hover:z-10 hover:outline hover:outline-1 hover:outline-teal-500"
+              className="max-w-sm lg:transition-transform lg:duration-500 lg:transform md:rounded-lg lg:hover:scale-110 lg:hover:z-10 hover:outline hover:outline-1 hover:outline-teal-500"
             >
               <label htmlFor={item.price} className="relative block">
                 <input
@@ -89,10 +89,10 @@ export const RadioCardDelivery = (props) => {
                     <img
                       src={item.icon}
                       alt=""
-                      className="w-20 h-6 border lg:h-8 2xl:h-auto lg:w-16 2xl:w-24"
+                      className="w-20 h-6 lg:h-8 2xl:h-auto lg:w-16 2xl:w-24"
                     />
                   </div>
-                  <div className="border">
+                  <div>
                     <h3 className="text-sm font-bold leading-none text-teal-600 lg:pr-3 lg:font-medium 2xl:text-base">
                       $ {item.price}
                     </h3>
@@ -101,17 +101,6 @@ export const RadioCardDelivery = (props) => {
                     </p>
                   </div>
                 </div>
-                {/* <div className="absolute flex items-center justify-center flex-none w-4 h-4 text-white duration-200 border rounded-full top-4 right-4 peer-checked:bg-indigo-600 peer-checked:text-white">
-                  <svg className="w-2.5 h-2.5" viewBox="0 0 12 10">
-                    <polyline
-                      fill="none"
-                      strokeWidth="2px"
-                      stroke="currentColor"
-                      strokeDasharray="16px"
-                      points="1.5 6 4.5 9 10.5 1"
-                    ></polyline>
-                  </svg>
-                </div> */}
               </label>
             </li>
           ))}

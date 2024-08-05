@@ -1,16 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Navbar } from "../components/Fragments/Navbar/Navbar";
-import { NavbarTitle } from "../components/Elements/Brand/NavbarTitle";
-import { DeleteIcon } from "../assets/Icons/DeleteIcon";
 import { RadioCardDelivery } from "../components/Fragments/Radio/RadioCardDelivery";
 import { RadioCardPayment } from "../components/Fragments/Radio/RadioCardPayment";
-import { DetailsPopup } from "../components/Fragments/Popups/DetailsCheckout";
-import { useNavigate } from "react-router-dom";
-import QRCodePopup from "../components/Fragments/Popups/QRCodePopup";
-import VirtualAccountPopup from "../components/Fragments/Popups/VirtualAccountPopup";
-import CODPopup from "../components/Fragments/Popups/CODPopup";
-import { EmptyCartPopup } from "../components/Fragments/Popups/EmptyCart";
 import { CartList } from "../components/Fragments/Cart/CartList";
 import { TransactionDetails } from "../components/Fragments/Cart/TransactionDetails";
 import { usePayment } from "../context/UsePayment";
@@ -36,32 +28,16 @@ export const CartPage = () => {
   return (
     <div className="flex flex-col w-full min-h-screen ">
       <Navbar />
-      <div className="flex items-center justify-center flex-grow mt-16 bg-gray-200 border-2 border-black 2xl:mt-20">
-        <div className="w-full my-2 border-2 border-pink-600 2xl:my-0 lg:w-11/12 2xl:w-4/5">
-          {/* <div className="flex justify-between w-full ">
-            <h2 className="font-semibold border border-black lg:w-4/6 2xl:w-3/4 2xl:text-2xl font-Roboto ">
-              List Order
-            </h2>
-            <h2 className="font-semibold border border-black lg:w-1/4 2xl:w-1/5 2xl:text-2xl font-Roboto ">
-              Payment Method
-            </h2>
-          </div> */}
-          <div className="flex flex-col justify-between w-full border border-gray-700 lg:flex-row">
+      <div className="flex items-center justify-center flex-grow mt-16 bg-gray-200 2xl:mt-20">
+        <div className="w-full my-2 2xl:my-0 lg:w-11/12 2xl:w-4/5">
+          <div className="flex flex-col justify-between w-full lg:flex-row">
             <CartList cart={cart} removeFromCart={removeFromCart} />
             <RadioCardPayment
               onPaymentMethodChange={handlePaymentMethodChange}
             />
           </div>
-          <div className="flex w-full mt-2 border border-black ">
-            {/* <div className="flex justify-between border border-gray-700">
-              <h2 className="font-semibold border border-pink-500 lg:w-4/6 2xl:w-3/4 font-Roboto 2xl:text-2xl">
-                Delivery
-              </h2>
-              <h2 className="font-semibold border border-pink-500 lg:w-1/4 2xl:w-1/5 font-Roboto 2xl:text-2xl">
-                Payment Summary
-              </h2>
-            </div> */}
-            <div className="flex flex-col justify-between flex-grow border border-gray-900 lg:flex-row">
+          <div className="flex w-full mt-2 ">
+            <div className="flex flex-col justify-between flex-grow lg:flex-row">
               {/* Start Selected Delivery */}
               <RadioCardDelivery onPriceChange={handleDelivery} />
               {/* End Selected Delivery */}
@@ -79,7 +55,7 @@ export const CartPage = () => {
           </div>
           {showPopup && (
             <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-              <div className="flex flex-col justify-center max-w-md p-6 bg-white rounded-lg shadow-lg">
+              <div className="flex flex-col justify-center max-w-xs p-6 bg-white rounded-lg shadow-lg">
                 {popupContent}
                 <button
                   onClick={() => setShowPopup(false)}
@@ -92,17 +68,6 @@ export const CartPage = () => {
           )}
         </div>
       </div>
-      {/* {showPopup && (
-        <DetailsPopup
-          totalAmount={totalAmount}
-          totalHarga={totalHarga}
-          selectedDelivery={selectedDelivery}
-          costDamage={costDamage}
-          voucherDiscount={voucherDiscount}
-          paymentMetode={paymentMetode}
-          onClose={() => setShowPopup(false)}
-        />
-      )} */}
     </div>
   );
 };

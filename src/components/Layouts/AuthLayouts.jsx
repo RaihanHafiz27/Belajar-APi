@@ -47,7 +47,7 @@ export const AuthLayouts = (props) => {
 const Navigation = () => {
   return (
     <div className="my-4 text-center 2xl:my-6">
-      <p className="my-2 text-lg font-semibold 2xl:my-5 lg:text-xl 2xl:text-2xl font-Poopins text-amber-600">
+      <div className="my-2 text-lg font-semibold 2xl:my-5 lg:text-xl 2xl:text-2xl font-Poopins text-amber-600">
         <TypewriterComponent
           options={{
             strings: ["Welcome to LUXURA"],
@@ -59,7 +59,7 @@ const Navigation = () => {
             cursorClassName: "Typewriter__cursor", // Menggunakan class untuk lebih mengontrol gaya cursor
           }}
         />
-      </p>
+      </div>
       <Link
         to={"/"}
         className={`mx-1 lg:text-lg 2xl:text-xl font-semibold tracking-wide font-Poopins ${

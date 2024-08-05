@@ -7,7 +7,7 @@ import { RegisterPage } from "./pages/register.jsx";
 import { ProductsPage } from "./pages/products.jsx";
 import TotalTopUpContextProvider from "./context/TotalTopUp.jsx";
 import { CartPage } from "./pages/cart.jsx";
-import { ProfilePage } from "./pages/profile.jsx";
+import { ProductsPage } from "./pages/products.jsx";
 import { DetailsProductPage } from "./pages/detailsProduct.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { HomePage } from "./pages/home.jsx";
